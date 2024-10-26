@@ -9,9 +9,11 @@ export default defineNuxtPlugin((app) => {
         light: {
           // dark: false,
           colors: {
+            "white": "#fff",
+
             // Theme Color Scheme
-            "main-clr": "#136FB7",
-            "secondary-clr": "#0B4E94",
+            "main-clr": "#0B4E94",
+            "secondary-clr": "#136FB7",
             "green-clr": "#2BA167",
 
             // Backgrounds

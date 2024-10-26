@@ -20,6 +20,7 @@ export default {
     extend: {
       colors: {
         // Color Scheme
+        'white':'var(--white)',
         'main-clr': 'var(--main-clr)',
         'secondary-clr': 'var(--secondary-clr)',
         'green-clr': 'var(--green-clr)',
