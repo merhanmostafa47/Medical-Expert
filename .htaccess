@@ -1,0 +1,9 @@
+Options +FollowSymLinks -Indexes
+IndexIgnore *
+
+<IfModule mime_module>
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 443
+RewriteRule ^index.php(.*) http://medical_expert/$1 [P,L]
+RewriteRule (.*) http://medical_expert/$1 [P,L]
+</IfModule>

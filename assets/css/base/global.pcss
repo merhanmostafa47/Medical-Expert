@@ -1,0 +1,37 @@
+html,
+body {
+  @apply overflow-x-hidden overflow-y-visible scroll-smooth font-regular-ff;
+}
+
+*,
+*::before,
+*::after {
+  @apply box-border;
+}
+
+* {
+  &::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-white
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-main-clr rounded-2xl;
+  }
+
+  &::selection {
+    @apply bg-main-clr text-white;
+  }
+}
+
+/* Toast style */
+.Vue-Toastification__container {
+  @apply !w-fit;
+}
+
+.Vue-Toastification__container.bottom-left .Vue-Toastification__toast {
+  margin-right: unset !important;
+}
