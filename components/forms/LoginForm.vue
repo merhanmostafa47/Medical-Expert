@@ -55,8 +55,6 @@ const submit = handleSubmit(async (values) => {
   <form class="flex justify-end flex-col w-full" @submit="submit">
     <v-row class="flex w-full !py-0 !m-0">
       <base-input
-        cols="8"
-        col="9"
         v-model="phone"
         :label="t('FORMS.Labels.phone')"
         type="tel"

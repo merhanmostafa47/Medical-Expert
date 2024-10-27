@@ -76,10 +76,12 @@ const props = defineProps({
     "
   >
     <div class="input_wrapper">
+      <label :for="id">
+        {{ label }}
+      </label>
       <v-text-field
         :id="id"
         v-model="model"
-        :label="label"
         :type="type"
         :placeholder="placeholder"
         :required="required"
@@ -87,9 +89,9 @@ const props = defineProps({
         :rules="validationRules"
         :error-messages="error"
         hide-details="auto"
-        :variant="variant"
-        :base-color="'rgba(226, 169, 55, .9)'"
-        :color="color"
+        :variant="outlined"
+        :base-color="'#136FB7'"
+    :color="'#136FB7'"
       ></v-text-field>
     </div>
   </v-col>
@@ -111,7 +113,7 @@ const props = defineProps({
         :rows="rows"
         hide-details="auto"
         :variant="variant"
-        :base-color="'rgba(226, 169, 55, .9)'"
+        :base-color="'#136FB7'"
         :color="color"
         clear-icon="mdi-close-circle"
       ></v-textarea>
@@ -121,12 +123,15 @@ const props = defineProps({
 </template>
 
 <style>
+label{
+  @apply font-regular-ff lg:text-base text-sm text-main-clr mb-2 block capitalize
+}
 .v-field__input {
-  @apply !pb-3 !rounded-2xl !overflow-hidden text-start md:placeholder:text-base   bg-transparent target:placeholder:!text-[#646464] outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm;
+  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border border-secondary-clr border-opacity-50 focus:border-opacity-100
 }
 
 .v-field--variant-filled .v-field__overlay {
-  @apply !bg-transparent;
+  @apply !bg-opacity-bg;
 }
 
 .v-field--variant-filled .v-field__outline::before {
@@ -156,5 +161,9 @@ input::-webkit-inner-spin-button {
 
 .v-field--variant-solo {
   @apply !bg-transparent !border-none !shadow-none;
+}
+
+.v-field__outline{
+  @apply text-transparent !border-0 !hidden
 }
 </style>

@@ -1,6 +1,9 @@
 <script setup>
 // I18n
 const { t } = useI18n();
+const localePath = useLocalePath();
+
+const router = useRouter();
 
 // Set Page Meta Data
 useSeoMeta({
@@ -8,18 +11,25 @@ useSeoMeta({
 });
 
 const userType = ref('')
+
+const goToLogin = () => {
+  router.push({ path: localePath("/auth/login"), query: { type: userType.value } });
+}
 </script>
 
 <template>
-  <main class="h-[100vh_-_128px] overflow-hidden">
+  <main class=" overflow-hidden">
     <!-- ======== Start:: Telegram Form Data Section ======== -->
-    <section>
+    <section class="h-[calc(100vh_-_128px)]">
       <v-container>
         <v-row class="gap-y-5 items-center">
           <v-col cols="12" md="7">
-            <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/admin.svg" width="350"
-              height="350" alt="admin" title="admin" loading="lazy"
-              class="w-full max-h-[31rem] h-full lg:block hidden  object-contain object-center" />
+            <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
+              <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/admin.svg" width="350"
+                height="350" alt="admin" title="admin" loading="lazy"
+                class="w-full  h-full object-contain object-center" />
+            </div>
+
           </v-col>
           <v-col cols="12" md="5">
             <div>
@@ -35,7 +45,7 @@ const userType = ref('')
                   :class="{ 'active': userType == 'pharmacy' }">pharmacy</button>
               </div>
               <div class="flex items-end justify-end mt-16">
-                <button class="btn" :disabled="userType == ''">
+                <button class="btn" :disabled="userType == ''" @click="goToLogin">
                   <span>
                     next
                   </span>
