@@ -79,27 +79,5 @@ const submit = handleSubmit(async (values) => {
           : t("BUTTONS.auth.register")
       }}
     </button>
-
-    <div class="flex items-center justify-center mt-6 md:mt-8">
-      <div v-if="route.path.includes('login')" class="text-sm md:text-base">
-        <span>{{ t("TITLES.auth.notHaveAccount") }}</span>
-        <NuxtLink
-          :to="localePath('/auth/register')"
-          class="text-main-clr font-semibold-ff hover:!text-dark-main-clr underline underline-offset-4 transition-all duration-300 mx-1"
-        >
-          {{ t("TITLES.auth.createAccount") }}
-        </NuxtLink>
-      </div>
-
-      <div v-if="route.path.includes('register')" class="text-sm md:text-base">
-        <span>{{ t("TITLES.auth.haveAccount") }}</span>
-        <NuxtLink
-          :to="localePath('/auth/login')"
-          class="text-main-clr font-semibold-ff hover:!text-dark-main-clr underline underline-offset-4 ease-in-out transition-all duration-300 mx-1"
-        >
-          {{ t("TITLES.auth.loginNow") }}
-        </NuxtLink>
-      </div>
-    </div>
   </form>
 </template>

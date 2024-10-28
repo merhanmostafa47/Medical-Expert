@@ -3,8 +3,8 @@
 
   "TITLES": {
     "auth": {
-      "login": "Login",
-      "register": "create account",
+      "login": "Sign In",
+      "register": "Sign Up",
       "haveAccount": "Already have an account?",
       "notHaveAccount": "Don't have an account?",
       "createAccount": "Create an account!",
@@ -18,8 +18,8 @@
   },
   "BUTTONS": {
     "auth": {
-      "login": "login",
-      "register": "create account",
+      "login": " sign in",
+      "register": " Register Now",
       "confirmCode": "confirm code",
       "resendOtp": "resend code",
       "goToHome": "go to home"

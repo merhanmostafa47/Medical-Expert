@@ -2,6 +2,8 @@
 // I18n
 const { t } = useI18n();
 
+const localePath = useLocalePath();
+
 // Set Page Meta Data
 useSeoMeta({
   title: t("TITLES.auth.login"),
@@ -22,7 +24,24 @@ useSeoMeta({
             </div>
           </v-col>
           <v-col cols="12" md="5">
-            <LoginForm />
+            <div class="auth__form__wrapper">
+              <div class="form__header">
+                <h1 class="auth__title">
+                  {{ t("TITLES.auth.login") }}
+                </h1>
+
+                <div class="auth__copy">
+                  <span>
+                    {{ t("TITLES.auth.notHaveAccount") }}
+                  </span>
+                  <NuxtLink class="auth__link" to="localePath('/auth/register')">
+                    {{ t("BUTTONS.auth.register") }}
+                  </NuxtLink>
+                </div>
+              </div>
+
+              <LoginForm />
+            </div>
           </v-col>
 
         </v-row>
