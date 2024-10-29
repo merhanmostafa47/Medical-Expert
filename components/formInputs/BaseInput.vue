@@ -72,7 +72,7 @@ const props = defineProps({
     :cols="cols"
     :md="col"
     v-if="
-      type == 'text' || type == 'number' || type == 'tel' || type == 'email'
+      type == 'text' || type == 'number' || type == 'tel' || type == 'email' || type == 'password'
     "
   >
     <div class="input_wrapper">
@@ -89,7 +89,7 @@ const props = defineProps({
         :rules="validationRules"
         :error-messages="error"
         hide-details="auto"
-        :variant="outlined"
+        :variant="variant"
         :base-color="'#136FB7'"
     :color="'#136FB7'"
       ></v-text-field>
@@ -127,7 +127,7 @@ label{
   @apply font-regular-ff lg:text-base text-sm text-main-clr mb-2 block capitalize
 }
 .v-field__input {
-  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border border-secondary-clr border-opacity-50 focus:border-opacity-100
+  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border border-secondary-clr
 }
 
 .v-field--variant-filled .v-field__overlay {

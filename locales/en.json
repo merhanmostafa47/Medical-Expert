@@ -1,6 +1,5 @@
 {
   "APP_NAME": "Medical Expert",
-
   "TITLES": {
     "auth": {
       "login": "Sign In",
@@ -27,57 +26,34 @@
   },
   "FORMS": {
     "Labels": {
-      "name": "Full name",
+      "name": "Name",
       "email": "Email",
-      "message": "Message",
-      "phone": "phone number",
-      "telegramForm": {
-        "service": "choose service",
-        "destination": "choose destination",
-        "template": "telegram template",
-        "identityNumber": "Identity, residence, or passport number",
-        "files": "Attach other files",
-        "identityPhoto": "Attach a copy of your ID, residence permit, or passport so that your message is not ignored by the receiving party"
-      },
-      "coupon": "Add a discount code"
+      "password": "Password",
+      "rememberMe": "remember me",
+      "forgotPassword": "Forget password ?",
+      "confirmPassword": "Confirm password",
+      "nationalId": "National ID",
+      "pharmacyId": "Pharmacy ID",
+      "syndicateId": "Syndicate ID",
+      "labId": "Laboratory ID"
     },
     "Placeholders": {
-      "name": "Full Name",
-      "email": "Email Address",
-      "message": "leave your message here ... ",
-      "phone": "966",
-      "telegramForm": {
-        "identityNumber": "0000000000",
-        "files": "Attach the file here",
-        "identityPhoto": "Attach the photo here"
-      },
-      "coupon": "Add a discount code"
+      "name": "Enter Your Name",
+      "email": "Email address",
+      "password": "Password",
+      "nationalId": "Enter Your National ID",
+      "pharmacyId": "Enter Your Pharmacy ID",
+      "syndicateId": "Enter Your Syndicate ID",
+      "labId": "Enter Your Laboratory ID"
     },
     "Validation": {
-      "name": "The name field must not be empty",
+      "name": "the name is required",
       "email": {
         "required": "The email field must not be empty",
-        "notValid": "The email is not valid"
+        "notValid": "please enter a valid email"
       },
-      "message": "The message field must not be empty",
-      "otp": "Otp must be exactly 4 characters",
-      "phone": {
-        "notValid": "The phone is not valid",
-        "required": "The phone field must not be empty"
-      },
-      "telegramForm": {
-        "service": "The service field must not be empty",
-        "destination": "The destination field must not be empty",
-        "template": "The template field must not be empty",
-        "identityNumber": {
-          "required": "The identity number field must not be empty",
-          "notValid": "The identity number is not valid it should be 10 number"
-        },
-        "identityPhoto": "The identity photo field must not be empty",
-        "file": {
-          "required": "The files field must not be empty"
-        }
-      }
+      "password": "Please enter a valid password",
+      "confirmPassword": "Please enter a matched password"
     }
   }
 }

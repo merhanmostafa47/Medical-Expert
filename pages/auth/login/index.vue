@@ -4,6 +4,8 @@ const { t } = useI18n();
 
 const localePath = useLocalePath();
 
+const route =useRoute()
+
 // Set Page Meta Data
 useSeoMeta({
   title: t("TITLES.auth.login"),
@@ -11,12 +13,12 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="h-[calc(100vh_-_128px)] overflow-hidden">
+  <main class="h-[calc(100vh_-_128px)] lg:overflow-hidden">
     <!-- ======== Start:: Telegram Form Data Section ======== -->
     <section>
       <v-container>
         <v-row class="gap-y-5 items-center justify-between">
-          <v-col cols="12" md="6">
+          <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
               <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/admin.svg" width="350"
                 height="350" alt="admin" title="admin" loading="lazy"
@@ -34,7 +36,7 @@ useSeoMeta({
                   <span>
                     {{ t("TITLES.auth.notHaveAccount") }}
                   </span>
-                  <NuxtLink class="auth__link" to="localePath('/auth/register')">
+                  <NuxtLink class="auth__link" :to="{path: localePath('/auth/register'), query: { type: route.query.type }}">
                     {{ t("BUTTONS.auth.register") }}
                   </NuxtLink>
                 </div>

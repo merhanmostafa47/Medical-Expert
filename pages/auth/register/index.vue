@@ -17,31 +17,33 @@ useSeoMeta({
     <!-- ======== Start:: Telegram Form Data Section ======== -->
     <section>
       <v-container>
-        <v-row class="gap-y-5 items-center">
-          <v-col cols="12" md="7">
-            <h2 class="text-lg font-bold-ff mb-8 capitalize">
-              {{ t("TITLES.auth.register") }}
-            </h2>
-            <div
-              class="p-5 lg:p-10 rounded-lg shadow-[0_1px_8px_0_rgba(0,0,0,0.16)]"
-              data-aos="zoom-in-up"
-              data-aos-delay="300"
-            >
-              <LoginForm />
+        <v-row class="gap-y-5 items-center justify-between">
+          <v-col cols="12" md="5">
+            <div class="auth__form__wrapper">
+              <div class="form__header">
+                <h1 class="auth__title">
+                  {{ t("TITLES.auth.register") }}
+                </h1>
+
+                <div class="auth__copy">
+                  <span>
+                    {{ t("TITLES.auth.haveAccount") }}
+                  </span>
+                  <NuxtLink class="auth__link" :to="{path: localePath('/auth/login'), query: { type: route.query.type }}">
+                    {{ t("BUTTONS.auth.login") }}
+                  </NuxtLink>
+                </div>
+              </div>
+
+              <SignupForm />
             </div>
           </v-col>
-          <v-col cols="12" md="5">
-            <NuxtImg
-              presets="defaults"
-              :placeholder="[_, _, 60, 8]"
-              src="media/images/auth/login.svg"
-              width="350"
-              height="350"
-              alt="login img"
-              title="login img"
-              loading="lazy"
-              class="w-full md:h-72 h-60 object-contain object-center"
-            />
+          <v-col cols="12" md="6" class="hidden lg:block">
+            <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
+              <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/admin.svg" width="350"
+                height="350" alt="admin" title="admin" loading="lazy"
+                class="w-full  h-full object-contain object-center" />
+            </div>
           </v-col>
         </v-row>
       </v-container>
