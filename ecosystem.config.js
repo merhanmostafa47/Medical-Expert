@@ -2,7 +2,7 @@ module.exports = {
 	apps: [
 		{
 			name: "medical_expert",
-			port: 3021,
+			port: 3000,
 			exec_mode: "cluster",
 			instances: "max",
 			script: './.output/server/index.mjs',

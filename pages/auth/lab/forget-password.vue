@@ -8,19 +8,18 @@ const route =useRoute()
 
 // Set Page Meta Data
 useSeoMeta({
-  title: t("TITLES.auth.login"),
+  title: t("TITLES.auth.forgetPassword"),
 });
 </script>
 
 <template>
   <main class="h-[calc(100vh_-_128px)] lg:overflow-hidden">
-    <!-- ======== Start:: Telegram Form Data Section ======== -->
     <section>
       <v-container>
         <v-row class="gap-y-5 items-center justify-between">
           <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
-              <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/admin.svg" width="350"
+              <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/laboratory.svg" width="350"
                 height="350" alt="admin" title="admin" loading="lazy"
                 class="w-full  h-full object-contain object-center" />
             </div>
@@ -29,26 +28,22 @@ useSeoMeta({
             <div class="auth__form__wrapper">
               <div class="form__header">
                 <h1 class="auth__title">
-                  {{ t("TITLES.auth.login") }}
+                  {{ t("TITLES.auth.forgetPassword") }}
                 </h1>
 
                 <div class="auth__copy">
                   <span>
-                    {{ t("TITLES.auth.notHaveAccount") }}
+                    {{ t("TITLES.auth.forgetPasswordCopy") }}
                   </span>
-                  <NuxtLink class="auth__link" :to="{path: localePath('/auth/register'), query: { type: route.query.type }}">
-                    {{ t("BUTTONS.auth.register") }}
-                  </NuxtLink>
                 </div>
               </div>
 
-              <LoginForm />
+              <ForgetPasswordForm endpoint="lab/password/forgot" OtpPagePath="login"/>
             </div>
           </v-col>
 
         </v-row>
       </v-container>
     </section>
-    <!-- ======== End:: Telegram Form Data Section ======== -->
   </main>
 </template>

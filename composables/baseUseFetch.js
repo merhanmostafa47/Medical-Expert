@@ -11,7 +11,7 @@ export const useBaseFetch = (
   const token = useCookie("token");
 
   const OPTIONS = ref({
-    baseURL: `https://barqyat-api.spider-te8.com/api/`,
+    baseURL: `https://admin.medicalexpertise.net/api/`,
     method: request_method,
     headers: {
       "cache-control": "cache-control",

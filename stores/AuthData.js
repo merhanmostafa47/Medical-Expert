@@ -3,6 +3,7 @@ export const useAuthStore = defineStore("auth", {
     userToken: null,
     userId: null,
     userName: null,
+    userEmail: null,
     userPhone: null,
     resendCodeTime: null,
   }),
@@ -13,6 +14,7 @@ export const useAuthStore = defineStore("auth", {
         token: state.userToken,
         id: state.userId,
         name: state.userName,
+        email: state.userEmail,
         phone: state.userPhone,
         resendCodeTime: state.resendCodeTime,
       };
@@ -28,6 +30,7 @@ export const useAuthStore = defineStore("auth", {
       this.userToken = payload.token;
       this.userId = payload.id;
       this.userName = payload.name;
+      this.userEmail = payload.email;
       this.userPhone = payload.phone;
       this.resendCodeTime = payload.resendCodeTime;
 
@@ -38,12 +41,14 @@ export const useAuthStore = defineStore("auth", {
       const tokenCookie = useCookie("token");
       const idCookie = useCookie("id");
       const nameCookie = useCookie("name");
+      const emailCookie = useCookie("email");
       const phoneCookie = useCookie("phone");
       const resendCodeTimeCookie = useCookie("resendCodeTime");
 
       tokenCookie.value = this.userToken;
       idCookie.value = this.userId;
       nameCookie.value = this.userName;
+      emailCookie.value = this.userEmail;
       phoneCookie.value = this.userPhone;
       resendCodeTimeCookie.value = this.resendCodeTime;
     },
@@ -52,12 +57,14 @@ export const useAuthStore = defineStore("auth", {
       const tokenCookie = useCookie("token");
       const idCookie = useCookie("id");
       const nameCookie = useCookie("name");
+      const emailCookie = useCookie("email");
       const phoneCookie = useCookie("phone");
       const resendCodeTimeCookie = useCookie("resendCodeTime");
 
       this.userToken = tokenCookie.value;
       this.userId = idCookie.value;
       this.userName = nameCookie.value;
+      this.userEmail = emailCookie.value;
       this.userPhone = phoneCookie.value;
       this.resendCodeTime = resendCodeTimeCookie.value;
     },
@@ -67,6 +74,7 @@ export const useAuthStore = defineStore("auth", {
       this.userToken = null;
       this.userId = null;
       this.userName = null;
+      this.userEmail = null;
       this.userPhone = null;
       this.resendCodeTime = null;
 
@@ -74,12 +82,14 @@ export const useAuthStore = defineStore("auth", {
       const tokenCookie = useCookie("token");
       const idCookie = useCookie("id");
       const nameCookie = useCookie("name");
+      const emailCookie = useCookie("email");
       const phoneCookie = useCookie("phone");
       const resendCodeTimeCookie = useCookie("resendCodeTime");
 
       tokenCookie.value = null;
       idCookie.value = null;
       nameCookie.value = null;
+      emailCookie.value = null;
       phoneCookie.value = null;
       resendCodeTimeCookie.value = null;
     },

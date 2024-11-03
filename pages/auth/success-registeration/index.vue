@@ -14,7 +14,7 @@ useSeoMeta({
 
 <template>
   <main class="mt-0">
-    <!-- ======== Start:: Telegram Form Data Section ======== -->
+  
     <section>
       <v-container class="items-center justify-center">
         <div
@@ -47,6 +47,6 @@ useSeoMeta({
         </div>
       </v-container>
     </section>
-    <!-- ======== End:: Telegram Form Data Section ======== -->
+  
   </main>
 </template>

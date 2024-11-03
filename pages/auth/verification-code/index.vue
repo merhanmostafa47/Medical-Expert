@@ -13,7 +13,7 @@ useSeoMeta({
 
 <template>
   <main class="mt-0">
-    <!-- ======== Start:: Telegram Form Data Section ======== -->
+  
     <section>
       <v-container>
         <v-row class="gap-y-5 items-center">
@@ -50,6 +50,6 @@ useSeoMeta({
         </v-row>
       </v-container>
     </section>
-    <!-- ======== End:: Telegram Form Data Section ======== -->
+  
   </main>
 </template>

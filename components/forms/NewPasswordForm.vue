@@ -4,7 +4,7 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  forgetPasswordPath: {
+  loginPath: {
     type: String,
     required: true
   }
@@ -30,10 +30,6 @@ const toast = useToast();
 import { object, string } from "yup";
 
 const validationSchema = object({
-  email: string()
-    .email(t("FORMS.Validation.email.notValid"))
-    .required(t("FORMS.Validation.email.required")),
-
     password: string()
     .required(t("FORMS.Validation.password.required"))
     .matches(
@@ -47,18 +43,17 @@ const { handleSubmit, meta, setFieldError, isSubmitting } = useForm({
   validationSchema,
 });
 
-const { value: email, errorMessage: emailError } = useField("email");
 const { value: password, errorMessage: passwordError } = useField("password");
 
 const submit = handleSubmit(async (values, { resetForm }) => {
   console.log(values)
   const { data, error } = await useBaseFetch("POST", props.endpoint, locale, {
-    email: values.email,
+    email: authStore.getAuthUserData.email,
+    otp: route.query.otp,
     password: values.password,
   });
 
   // Set fields error with the server error
-  setFieldError("email", error?.value?.data?.errors?.email);
   setFieldError("password", error?.value?.data?.errors?.password);
 
   if (!error.value) {
@@ -74,7 +69,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     });
 
     router.push({
-      path: localePath("/dashbord"),
+      path: props.loginPath,
     });
 
   } else {
@@ -87,29 +82,14 @@ const submit = handleSubmit(async (values, { resetForm }) => {
 <template>
   <form class="flex justify-end flex-col w-full" @submit="submit">
 
-    <base-input v-model="email" :label="t('FORMS.Labels.email')" :placeholder="t('FORMS.Placeholders.email')"
-      type="email" class="!px-0" :error="emailError" />
-
-    <base-input v-model="password" :label="t('FORMS.Labels.password')" :placeholder="t('FORMS.Labels.password')"
+    <base-input v-model="password" :label="t('FORMS.Labels.NewPassword')" :placeholder="t('FORMS.placeholders.newPassword')"
       type="password" class="!px-0" :error="passwordError" />
 
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-1">
-          <input type="checkbox" id="rememberMe" class="w-4 h-4" />
-          <label for="rememberMe" class="text-sm text-secondary-clr font-regular-ff mb-0">
-            {{ t("FORMS.Labels.rememberMe") }}
-          </label>
-        </div>
-
-        <NuxtLink v-if="forgetPasswordPath" :to="forgetPasswordPath" class="text-sm text-secondary-clr font-regular-ff mb-0 hover:text-main-clr">
-          {{ t("FORMS.Labels.forgotPassword") }}
-        </NuxtLink>
-      </div>
     <button type="submit" :disabled="!meta.valid"
       class="disabled:opacity-50 relative flex items-center justify-center px-8 py-3 !text-secondary-text-clr capitalize rounded-lg bg-main-clr font-semiBold-ff text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg w-full mt-6 md:mt-10">
       <Icon name="lucide:loader-circle" size="20" class="animate-spin" v-if="isSubmitting" />
       {{
-        t("BUTTONS.auth.login")
+        t("BUTTONS.auth.save")
       }}
     </button>
   </form>

@@ -5,23 +5,33 @@
       "login": "Sign In",
       "register": "Sign Up",
       "haveAccount": "Already have an account?",
-      "notHaveAccount": "Don't have an account?",
+      "notHaveAccount": "Don't have an account ?",
       "createAccount": "Create an account!",
       "loginNow": "Login now!",
       "enterOtp": "Enter the verification code",
       "sendOtp": "We have sent the OTP verification code to your email. Check the messages and enter the code below",
       "resendOtpDuration": "The code can be re-sent within",
-      "otpNotSent": "The code was not sent ?",
-      "accountCreated": "The account has been created successfully. Please go to home"
+      "otpNotSent": "Didn’t receive code ? ",
+      "accountCreated": "The account has been created successfully. Please go to home",
+      "forgetPassword": "Forget Password",
+      "forgetPasswordCopy": "Enter your email to send OTP",
+      "verficationCodeCopy": "We have sent the verification code to your email",
+      "verficationCode": "verify Email",
+      "newPassword": "new password",
+      "new": "new password",
+      "setPassword": "You Can Set Your Password"
     }
   },
   "BUTTONS": {
     "auth": {
       "login": " sign in",
       "register": " Register Now",
-      "confirmCode": "confirm code",
-      "resendOtp": "resend code",
-      "goToHome": "go to home"
+      "confirmCode": "confirm",
+      "resendOtp": "resend",
+      "goToHome": "go to home",
+      "send": "Send",
+      "save": "save",
+      "confirm": "confirm"
     }
   },
   "FORMS": {
@@ -35,7 +45,8 @@
       "nationalId": "National ID",
       "pharmacyId": "Pharmacy ID",
       "syndicateId": "Syndicate ID",
-      "labId": "Laboratory ID"
+      "labId": "Laboratory ID",
+      "NewPassword": "New password"
     },
     "Placeholders": {
       "name": "Enter Your Name",
@@ -47,13 +58,31 @@
       "labId": "Enter Your Laboratory ID"
     },
     "Validation": {
-      "name": "the name is required",
+      "name": {
+        "required": "the name is required",
+        "min": "Min length of characters is 5",
+        "max": "Max length of characters is 30"
+      },
       "email": {
-        "required": "The email field must not be empty",
+        "required": "Email is required",
         "notValid": "please enter a valid email"
       },
-      "password": "Please enter a valid password",
-      "confirmPassword": "Please enter a matched password"
+      "password": {
+        "required": "Password is required",
+        "validation": "Password must be at least 8 characters and contain uppercase, lowercase, symbols, and numbers,"
+      },
+      "confirmPassword": {
+        "required": "Confirm password is required",
+        "validation": "Please enter a matched password"
+      },
+      "nationalId": "National ID is required",
+      "nationalIdLength": "the valid national ID consists of 14 numbers",
+      "pharmacyId": "Pharmacy ID is required",
+      "labId": "Laboratory ID is required",
+      "syndicateId": "Syndicate ID is required"
+    },
+    "placeholders": {
+      "newPassword": "Create your new password"
     }
   }
 }

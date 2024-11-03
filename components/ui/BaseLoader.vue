@@ -7,7 +7,7 @@ nuxtApp.hook('page:finish', () => isLoading.value = false);
 </script>
 
 <template>
-  <div v-if="isLoading" class="main_loader_wrapper fixed inset-0 bg-secondary-bg flex items-center justify-center min-h-screen max-h-screen z-[100]">
+  <div v-if="isLoading" class="main_loader_wrapper fixed inset-0 bg-white flex items-center justify-center min-h-screen max-h-screen z-[100]">
     <img
       src="/media/gifs/loader.gif" 
       width="260"

@@ -54,7 +54,7 @@ const props = defineProps({
   color: {
     type: String,
     required: false,
-    default: "var(--default-text-clr)",
+    default: "#136FB7",
   },
 });
 </script>
@@ -63,8 +63,8 @@ const props = defineProps({
   <!-- ======== Start::OTP Input Type ======== -->
   <div class="otp_input_wrapper" dir="ltr">
     <v-otp-input
-      length="4"
-      height="96"
+      length="6"
+      height="72"
       v-model="model"
       :id="id"
       :label="label"
@@ -75,8 +75,8 @@ const props = defineProps({
       :rules="validationRules"
       :error="error"
       :variant="variant"
-      bg-color="rgba(226, 169, 55, .2)"
-      base-color="rgba(226, 169, 55, .9)"
+      bg-color="#136FB7"
+      base-color="#136FB7"
       :color="color"
     ></v-otp-input>
     <span class="otp_error" v-if="error"> {{ error }} </span>
@@ -86,6 +86,18 @@ const props = defineProps({
 
 <style>
 .otp_error {
-  @apply text-input-error-clr text-center text-sm w-full inline-block;
+  @apply text-red-700 text-center text-sm w-full inline-block;
+}
+
+.v-otp-input__field{
+@apply !text-main-clr !text-base
+}
+
+.v-otp-input__content{
+ @apply !max-w-[370px]
+}
+
+.v-otp-input .v-field{
+  @apply !rounded-lg !overflow-hidden
 }
 </style>

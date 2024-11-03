@@ -39,6 +39,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vee-validate/nuxt',
     '@nuxtjs/sitemap',
+    '@nuxtjs/google-fonts',
   ],
 
   // ============ Modules Configurations ============ //
@@ -60,6 +61,11 @@ export default defineNuxtConfig({
     vueI18n: './i18n.config.ts',
   },
 
+  googleFonts: {
+    families: {
+      Inter: true,
+    },
+  },
   /* Set Rote Roles To Redirect To Default Locale Prefix If No Locale Prefix Is Exist */
   routeRules: {
     "/": { redirect: "/en" },

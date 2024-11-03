@@ -54,7 +54,7 @@ const props = defineProps({
   color: {
     type: String,
     required: false,
-    default: "var(--default-text-clr)",
+    default: "#136FB7",
   },
 
   // ====== Textarea Input Props
@@ -64,70 +64,117 @@ const props = defineProps({
     default: "4",
   },
 });
+
+const showPassword = ref(false);
+
+const togglePassword = () => {
+  showPassword.value = !showPassword.value;
+}
 </script>
 
 <template>
-  <!-- ======== Start:: Input Type text | email | tel | number ======== -->
-  <v-col
-    :cols="cols"
-    :md="col"
-    v-if="
-      type == 'text' || type == 'number' || type == 'tel' || type == 'email' || type == 'password'
-    "
-  >
-    <div class="input_wrapper">
-      <label :for="id">
-        {{ label }}
-      </label>
-      <v-text-field
-        :id="id"
-        v-model="model"
-        :type="type"
-        :placeholder="placeholder"
-        :required="required"
-        :disabled="disabled"
-        :rules="validationRules"
-        :error-messages="error"
-        hide-details="auto"
-        :variant="variant"
-        :base-color="'#136FB7'"
-    :color="'#136FB7'"
-      ></v-text-field>
-    </div>
-  </v-col>
-
-  <!-- ======== End:: Input Type text | email | tel  ======== -->
-
-  <!-- ======== Start:: Textarea Input ======== -->
-  <v-col :cols="cols" :md="col" v-else-if="type == 'textarea'" class="!p-1.5">
-    <div class="input_wrapper">
-      <v-textarea
-        :id="id"
-        v-model="model"
-        :label="label"
-        :placeholder="placeholder"
-        :required="required"
-        :disabled="disabled"
-        :rules="validationRules"
-        :error-messages="error"
-        :rows="rows"
-        hide-details="auto"
-        :variant="variant"
-        :base-color="'#136FB7'"
-        :color="color"
-        clear-icon="mdi-close-circle"
-      ></v-textarea>
-    </div>
-  </v-col>
-  <!-- ======== End:: Textarea Input ======== -->
+  <div>
+    <!-- ======== Start:: Input Type text | email | tel | number ======== -->
+    <v-col
+      :cols="cols"
+      :md="col"
+      v-if="
+        type == 'text' || type == 'number' || type == 'tel' || type == 'email'
+      "
+      class="!p-1"
+    >
+      <div class="input_wrapper">
+        <label :for="id">
+          {{ label }}
+        </label>
+        <v-text-field
+          :id="id"
+          v-model="model"
+          :type="type"
+          :placeholder="placeholder"
+          :required="required"
+          :disabled="disabled"
+          :rules="validationRules"
+          :error-messages="error"
+          hide-details="auto"
+          :variant="variant"
+          :base-color="'#136FB7'"
+          :color="'#136FB7'"
+        ></v-text-field>
+      </div>
+    </v-col>
+    <!-- ======== End:: Input Type text | email | tel | number  ======== -->
+  
+    <!-- ======== Start:: Input Type password ======== -->
+    <v-col :cols="cols" :md="col" v-if="type == 'password'" class="!p-1">
+      <div class="input_wrapper">
+        <label :for="id">
+          {{ label }}
+        </label>
+        <div class="password__input">
+          <v-text-field
+            :id="id"
+            v-model="model"
+            :type="showPassword ? 'text' : 'password'"
+            :placeholder="placeholder"
+            :required="required"
+            :disabled="disabled"
+            :rules="validationRules"
+            :error-messages="error"
+            hide-details="auto"
+            :variant="variant"
+            :base-color="'#136FB7'"
+            :color="'#136FB7'"
+          >
+          <Icon name="iconamoon:eye-off" size="16" v-if="showPassword"  class="eye-icon" @click="togglePassword()"/>
+          <Icon name="solar:eye-broken" size="16" v-else  class="eye-icon" @click="togglePassword()"/>
+          </v-text-field>
+        </div>
+      </div>
+    </v-col>
+    <!-- ======== End:: Input Type password  ======== -->
+  
+    <!-- ======== Start:: Textarea Input ======== -->
+    <v-col :cols="cols" :md="col" v-else-if="type == 'textarea'" class="!p-1">
+      <div class="input_wrapper">
+        <v-textarea
+          :id="id"
+          v-model="model"
+          :label="label"
+          :placeholder="placeholder"
+          :required="required"
+          :disabled="disabled"
+          :rules="validationRules"
+          :error-messages="error"
+          :rows="rows"
+          hide-details="auto"
+          :variant="variant"
+          :base-color="'#136FB7'"
+          :color="color"
+          clear-icon="mdi-close-circle"
+        ></v-textarea>
+      </div>
+    </v-col>
+    <!-- ======== End:: Textarea Input ======== -->
+  </div>
 </template>
 
 <style>
-label{
-  @apply font-regular-ff lg:text-base text-sm text-main-clr mb-2 block capitalize
+input{
+  @apply bg-opacity-bg
+}
+.password__input{
+  @apply relative flex items-center; 
+
+  .eye-icon{
+    @apply absolute translate-x-1/2 end-6 cursor-pointer text-main-clr;
+  }
+}
+label {
+  @apply font-regular-ff lg:text-base text-sm text-main-clr mb-2 block capitalize;
 }
 .v-field__input {
-  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border border-secondary-clr
+  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border border-secondary-clr;
 }
 
 .v-field--variant-filled .v-field__overlay {
@@ -163,7 +210,7 @@ input::-webkit-inner-spin-button {
   @apply !bg-transparent !border-none !shadow-none;
 }
 
-.v-field__outline{
-  @apply text-transparent !border-0 !hidden
+.v-field__outline {
+  @apply text-transparent !border-0 !hidden;
 }
 </style>
