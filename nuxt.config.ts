@@ -38,7 +38,6 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@vueuse/nuxt',
     '@vee-validate/nuxt',
-    '@nuxtjs/sitemap',
     '@nuxtjs/google-fonts',
   ],
 
