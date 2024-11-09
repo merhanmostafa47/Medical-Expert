@@ -18,6 +18,11 @@ const localePath = useLocalePath();
 const route = useRoute();
 const router = useRouter();
 
+// Set authed data in store
+import { useAuthStore } from "@/stores/AuthData.js";
+const authStore = useAuthStore();
+
+
 // Toast Composables
 import { useToast } from "vue-toastification";
 const toast = useToast();
@@ -49,6 +54,12 @@ const submit = handleSubmit(async (values, { resetForm }) => {
   if (!error.value) {
     toast.success(data?.value?.message);
     resetForm();
+
+    authStore.setAuthedData({
+      ...authStore.getAuthUserData,
+      email: values.email,
+    });
+
 
     router.push({
       path: 'verification-code',

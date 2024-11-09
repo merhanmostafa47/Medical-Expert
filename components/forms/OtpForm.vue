@@ -6,10 +6,13 @@ const props = defineProps({
   },
   resetPasswordPath: {
     type: String,
-    required: true
+    required: true,
   },
-})
-
+  resendOtpEndpoint: {
+    type: String,
+    required: true,
+  },
+});
 
 // I18n
 const { t, locale } = useI18n();
@@ -54,19 +57,13 @@ otp.value = "000000";
 otpError.value = "";
 
 const submit = handleSubmit(async (values, { resetForm }) => {
-  const { data, error } = await useBaseFetch(
-    "POST",
-    props.endpoint,
-    locale,
-    {
-      email: authStore.getAuthUserData.email,
-      otp: values.otp,
-    }
-  );
+  const { data, error } = await useBaseFetch("POST", props.endpoint, locale, {
+    email: authStore.getAuthUserData.email,
+    otp: values.otp,
+  });
 
   if (!error?.value) {
     toast.success(data?.value?.message);
-
 
     // if (route.path.includes("auth")) {
     //   authStore.setAuthedData({
@@ -79,10 +76,10 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     // }
 
     router.replace({
-        path: route.query.type == "verfiy-email"? 'login' : props.resetPasswordPath,
-        query:{otp: route.query.type == "verfiy-email" ? '' :  otp.value}
-      });
-
+      path:
+        route.query.type == "verfiy-email" ? "login" : props.resetPasswordPath,
+      query: { otp: route.query.type == "verfiy-email" ? "" : otp.value },
+    });
   } else {
     setFieldError("otp", error?.value?.data?.errors?.otp[0]);
     toast.error(error?.value?.data?.message);
@@ -90,26 +87,26 @@ const submit = handleSubmit(async (values, { resetForm }) => {
 });
 
 // Regenerate OTP
-// const regenerateOtp = async () => {
-//   const { data, error } = await useBaseFetch(
-//     "POST",
-//     route.path.includes("profile")
-//       ? "change-phone/regenerate"
-//       : "phoneotp/generate",
-//     locale,
-//     {
-//       email: authStore.getAuthUserData.email,
-//     }
-//   );
+const regenerateOtp = async () => {
+  const { data, error } = await useBaseFetch("GET", resendOtpEndpoint, locale, {
+    email: authStore.getAuthUserData.email,
+  });
 
-//   if (!error?.value) {
-//     toast.success(data?.value?.message);
-//     restartTimer();
-//     otp.value = "00000";
-//   } else {
-//     toast.error(error?.value?.data?.message);
-//   }
-// };
+  if (!error?.value) {
+    toast.success(data?.value?.message);
+    restartTimer();
+    otp.value = "00000";
+  } else {
+    toast.error(error?.value?.data?.message);
+  }
+};
+
+const goToResetPassword =()=>{
+  router.replace({
+      path: 'new-password',
+      query: { otp:  otp.value },
+    });
+}
 </script>
 
 <template>
@@ -119,18 +116,35 @@ const submit = handleSubmit(async (values, { resetForm }) => {
       <span class="text-main-clr font-semiBold-ff">{{ displayTime }}</span>
     </p>
     <div class="flex justify-center my-4">
-    <span class="text-sm lg:text-base xl:text-lg text-center text-secondary-clr font-medium-ff">
-      {{ t("TITLES.auth.otpNotSent") }}
-    </span>
+      <span
+        class="text-sm lg:text-base xl:text-lg text-center text-secondary-clr font-medium-ff"
+      >
+        {{ t("TITLES.auth.otpNotSent") }}
+      </span>
+      <button
+        class="text-main-clr font-semiBold-ff hover:text-main-clr text-sm lg:text-base xl:text-lg mx-1 disabled:!text-light-default-text-clr disabled:!cursor-not-allowed capitalize"
+        @click="regenerateOtp"
+        :disabled="timeRemaining"
+      >
+        {{ t("BUTTONS.auth.resendOtp") }}
+      </button>
+    </div>
     <button
-      class="text-main-clr font-semiBold-ff hover:text-main-clr  text-sm lg:text-base xl:text-lg  mx-1 disabled:!text-light-default-text-clr disabled:!cursor-not-allowed capitalize"
-      @click="regenerateOtp"
-      :disabled="timeRemaining"
+      v-if="route.query.type == 'reset-password'"
+      @click.prevent="goToResetPassword"
+      :disabled="!meta.valid"
+      class="disabled:opacity-50 relative flex items-center justify-center px-8 py-3 !text-secondary-text-clr capitalize rounded-lg font-semiBold-ff bg-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg w-full mt-0 md:mt-3"
     >
-      {{ t("BUTTONS.auth.resendOtp") }}
+      <Icon
+        name="lucide:loader-circle"
+        size="20"
+        class="animate-spin"
+        v-if="isSubmitting"
+      />
+      {{ t("BUTTONS.auth.continue") }}
     </button>
-  </div>
     <button
+      v-else
       type="submit"
       :disabled="!meta.valid"
       class="disabled:opacity-50 relative flex items-center justify-center px-8 py-3 !text-secondary-text-clr capitalize rounded-lg font-semiBold-ff bg-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg w-full mt-0 md:mt-3"

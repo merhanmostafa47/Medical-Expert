@@ -89,7 +89,8 @@ const submit = handleSubmit(async (values, { resetForm }) => {
  const { data, error } = await useBaseFetch("POST", props.endpoint, locale, {
     name: values.name,
     email: values.email,
-    SSN: values?.nationalId || values?.syndicateId,
+    SSN: values?.nationalId ,
+    doctor_id: values?.syndicateId,
     pharmacy_id: values?.pharmacyId,
     lab_id: values?.labId,
     password: values.password,
@@ -101,7 +102,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
   setFieldError("email", error?.value?.data?.errors?.email);
   setFieldError("nationalId", error?.value?.data?.errors?.SSN);
   setFieldError("pharmacyId", error?.value?.data?.errors?.pharmacy_id);
-  setFieldError("syndicateId", error?.value?.data?.errors?.SSN);
+  setFieldError("syndicateId", error?.value?.data?.errors?.doctor_id);
   setFieldError("labId", error?.value?.data?.errors?.lab_id);
   setFieldError("password", error?.value?.data?.errors?.password);
 

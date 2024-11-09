@@ -31,7 +31,8 @@
       "goToHome": "go to home",
       "send": "Send",
       "save": "save",
-      "confirm": "confirm"
+      "confirm": "confirm",
+      "continue": "Continue"
     }
   },
   "FORMS": {

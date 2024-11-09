@@ -28,8 +28,8 @@ useSeoMeta({
             <div class="auth__form__wrapper">
               <div class="form__header">
                 <h1 class="auth__title">
-                  {{ route.query.type == 'verfiy-email' ? 
-                  t("TITLES.auth.verficationCode") : t("TITLES.auth.forgetPassword")}}
+                  {{ route.path.includes('forget-password') ? 
+                   t("TITLES.auth.forgetPassword"): t("TITLES.auth.verficationCode")}}
                 </h1>
 
                 <div class="auth__copy">
@@ -39,7 +39,7 @@ useSeoMeta({
                 </div>
               </div>
 
-              <OtpForm endpoint="patient/verify" resetPasswordPath="new-password"/>
+              <OtpForm endpoint="patient/verify" resetPasswordPath="new-password" resendOtpEndpoint="patient/get-otp"/>
             </div>
           </v-col>
 

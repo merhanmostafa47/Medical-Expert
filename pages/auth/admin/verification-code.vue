@@ -39,7 +39,7 @@ useSeoMeta({
                 </div>
               </div>
 
-              <OtpForm endpoint="doctor/verify" resetPasswordPath="new-password"/>
+              <OtpForm endpoint="doctor/verify" resetPasswordPath="new-password" />
             </div>
           </v-col>
 
