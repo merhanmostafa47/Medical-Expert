@@ -5,9 +5,16 @@ export default defineNuxtConfig({
 
   // ============ App Configurations ============ //
   app: {
+    baseURL: '/', 
     head: {
       charset: "utf-8",
     },
+  },
+
+  ssr: true, // or false depending on your app
+
+  nitro: {
+    preset: 'vercel', // Important for Vercel deployment
   },
 
   // ============ Project Css & Scripts Files ============ //
