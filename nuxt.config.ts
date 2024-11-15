@@ -11,8 +11,6 @@ export default defineNuxtConfig({
     },
   },
 
-  ssr: true, // or false depending on your app
-
   nitro: {
     preset: 'vercel', // Important for Vercel deployment
   },
@@ -123,9 +121,9 @@ export default defineNuxtConfig({
   },
 
   // ============ Nitro Configurations ============ //
-  nitro: {
-    preset: "node-server",
-  },
+  // nitro: {
+  //   preset: "node-server",
+  // },
 
   // ============ General Configurations ============ //
   ssr: true,
