@@ -73,7 +73,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     });
 
   } else {
-    toast.error(error?.value?.data?.error);
+    toast.error(error.value?.data?.message);
   }
 });
 

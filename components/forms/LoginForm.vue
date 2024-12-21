@@ -50,13 +50,13 @@ const { handleSubmit, meta, setFieldError, isSubmitting } = useForm({
 const { value: email, errorMessage: emailError } = useField("email");
 const { value: password, errorMessage: passwordError } = useField("password");
 
-const remember=ref(false)
+// const remember=ref(false)
 const submit = handleSubmit(async (values, { resetForm }) => {
 
   const { data, error } = await useBaseFetch("POST", props.endpoint, locale, {
     email: values.email,
     password: values.password,
-    remember: remember.value
+    // remember: remember.value 
   });
 
   // Set fields error with the server error
@@ -79,7 +79,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     });
 
   } else {
-    toast.error(error?.value?.data?.error);
+    toast.error(error.value?.data?.message);
   }
 });
 
@@ -95,12 +95,12 @@ const submit = handleSubmit(async (values, { resetForm }) => {
       type="password" class="!px-0" :error="passwordError" />
 
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-1">
+        <!-- <div class="flex items-center gap-1">
           <input type="checkbox" id="rememberMe" class="w-4 h-4" v-model="remember"/>
           <label for="rememberMe" class="text-sm text-secondary-clr font-regular-ff mb-0">
             {{ t("FORMS.Labels.rememberMe") }}
           </label>
-        </div>
+        </div> -->
 
         <NuxtLink v-if="forgetPasswordPath" :to="forgetPasswordPath" class="text-sm text-secondary-clr font-regular-ff mb-0 hover:text-main-clr">
           {{ t("FORMS.Labels.forgotPassword") }}

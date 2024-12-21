@@ -124,7 +124,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     });
     
   } else {
-    toast.error(error?.value?.data?.message);
+    toast.error(error.value?.data?.message);
   }
 });
 </script>
