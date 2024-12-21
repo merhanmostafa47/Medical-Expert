@@ -1,4 +1,14 @@
 <script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+onMounted(() => {
+  console.log(router.currentRoute.value.path);
+  console.log("Is Admin Module ?" + router.currentRoute.value.path.includes('admin'));
+  console.log("Is Patient Module ?" + router.currentRoute.value.path.includes('patient'));
+})
+
 // I18n
 const { locale, locales } = useI18n();
 const alternativeLocale = computed(() => {
@@ -9,6 +19,8 @@ const alternativeLocale = computed(() => {
 import { useAuthStore } from "@/stores/AuthData.js";
 const authStore = useAuthStore();
 authStore.loadAuthFromCookie();
+
+
 </script>
 
 <template>
