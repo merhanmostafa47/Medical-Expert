@@ -14,7 +14,7 @@ const emits = defineEmits(['close', 'goToLogin'])
     <BaseModal :isOpen="openModal" @close="emit('close')">
         <div class="modal__content">
             <div class="modal__img">
-                <img src="media/images/auth/password-reset.svg" alt="mark" />
+                <img src="media/icons/mark.svg" alt="mark" />
             </div>
 
             <p class="modal__copy">
