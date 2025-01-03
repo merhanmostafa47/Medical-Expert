@@ -22,6 +22,11 @@
       "setPassword": "You Can Set Your Password"
     }
   },
+  "MODALS": {
+    "auth":{
+      "passwordReset":"Password changed successfully"
+    }
+  },
   "BUTTONS": {
     "auth": {
       "login": " sign in",

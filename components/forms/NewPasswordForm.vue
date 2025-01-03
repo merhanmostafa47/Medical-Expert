@@ -30,7 +30,7 @@ const toast = useToast();
 import { object, string } from "yup";
 
 const validationSchema = object({
-    password: string()
+  password: string()
     .required(t("FORMS.Validation.password.required"))
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
@@ -68,22 +68,33 @@ const submit = handleSubmit(async (values, { resetForm }) => {
       token: data?.value?.token,
     });
 
-    router.push({
-      path: props.loginPath,
-    });
+    toggleModal();
 
   } else {
     toast.error(error.value?.data?.message);
   }
 });
 
+const openModal = ref(false);
+
+const toggleModal = () => {
+  openModal.value = !openModal.value;
+};
+
+const loginAgain = () => {
+  router.push({
+    path: localePath(props.loginPath),
+  });
+
+  toggleModal();
+}
 </script>
 
 <template>
   <form class="flex justify-end flex-col w-full" @submit="submit">
 
-    <base-input v-model="password" :label="t('FORMS.Labels.NewPassword')" :placeholder="t('FORMS.placeholders.newPassword')"
-      type="password" class="!px-0" :error="passwordError" />
+    <base-input v-model="password" :label="t('FORMS.Labels.NewPassword')"
+      :placeholder="t('FORMS.placeholders.newPassword')" type="password" class="!px-0" :error="passwordError" />
 
     <button type="submit" :disabled="!meta.valid"
       class="disabled:opacity-50 relative flex items-center justify-center px-8 py-3 !text-secondary-text-clr capitalize rounded-lg bg-main-clr font-semiBold-ff text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg w-full mt-6 md:mt-10">
@@ -92,5 +103,6 @@ const submit = handleSubmit(async (values, { resetForm }) => {
         t("BUTTONS.auth.save")
       }}
     </button>
+    <PasswordResetModal :openModal="openModal" @close="toggleModal" @goToLogin="loginAgain" />
   </form>
 </template>
