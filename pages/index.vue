@@ -11,6 +11,8 @@ useSeoMeta({
   title: t("TITLES.auth.login"),
 });
 
+const url = useRequestURL();
+
 const userType = ref("");
 
 const goToLogin = () => {
@@ -38,7 +40,7 @@ const goToLogin = () => {
   <main class="overflow-hidden">
     <section class="h-[calc(100vh_-_128px)]">
       <v-container>
-        <v-row class="gap-y-5 items-center justify-between" v-if="router.currentRoute.value.path.includes('admin')">
+        <v-row class="gap-y-5 items-center justify-between" v-if="url.href.includes('admin')">
           <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
               <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/admin.svg" width="350"
@@ -59,7 +61,7 @@ const goToLogin = () => {
           </v-col>
         </v-row>
 
-        <v-row class="gap-y-5 items-center justify-between" v-if="router.currentRoute.value.path.includes('patient')">
+        <v-row class="gap-y-5 items-center justify-between" v-if="url.href.includes('patient')">
           <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
               <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/patient.svg" width="350"

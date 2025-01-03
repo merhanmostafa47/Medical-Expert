@@ -1,12 +1,23 @@
 <script setup>
-import { useRouter } from "vue-router";
+import {ref} from "vue";
+import { useRouter, useRoute } from "vue-router";
+
 
 const router = useRouter();
+const route = useRoute();
+
+
+// const currentPath = ref(window.location.hash)
+
+// window.addEventListener('hashchange', () => {
+//   currentPath.value = window.location.hash
+// })
+
+const url = useRequestURL();
 
 onMounted(() => {
-  console.log(router.currentRoute.value.path);
-  console.log("Is Admin Module ?" + router.currentRoute.value.path.includes('admin'));
-  console.log("Is Patient Module ?" + router.currentRoute.value.path.includes('patient'));
+  console.log("Is Admin Module ?" + url.href.includes('admin'));
+  console.log("Is Patient Module ?" + url.href.includes('patient'));
 })
 
 // I18n
