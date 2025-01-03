@@ -83,7 +83,7 @@ const toggleModal = () => {
 
 const loginAgain = () => {
   router.push({
-    path: localePath(props.loginPath),
+    path: props.loginPath,
   });
 
   toggleModal();

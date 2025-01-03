@@ -9,7 +9,7 @@ const props = defineProps({
     },
 })
 
-const emits = defineEmits(['close', 'goToLogin'])
+const emit = defineEmits(['close', 'goToLogin'])
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const emits = defineEmits(['close', 'goToLogin'])
                 {{ t('MODALS.auth.passwordReset') }}
             </p>
 
-            <button class="btn" @click="emit('goToLogin')">
+            <button class="btn w-full" @click="emit('goToLogin')">
                 {{ t('BUTTONS.auth.login') }}
             </button>
         </div>
@@ -32,11 +32,11 @@ const emits = defineEmits(['close', 'goToLogin'])
 
 <style scoped>
 .modal__content{
-    @apply lg:py-24 lg:px-20 py-14 px-6 flex items-center justify-center flex-col lg:gap-10 gap-6 
+    @apply lg:py-24 lg:px-20 py-14 px-6 flex items-center justify-center flex-col  gap-6 
 }
 
 .modal__img{
-    @apply size-48 p-6 rounded-full bg-opacity-bg flex justify-center items-center;
+    @apply size-28 lg:size-32 p-6 rounded-full bg-opacity-bg flex justify-center items-center;
     img{
         @apply size-full object-contain;
     }
