@@ -37,15 +37,15 @@ const goToLogin = () => {
 </script>
 
 <template>
-  <main class="overflow-hidden">
+  <main>
     <section class="h-[calc(100vh_-_128px)]">
       <v-container>
-        <v-row class="gap-y-5 items-center justify-between" v-if="url.href.includes('admin')">
+        <v-row class="items-center justify-between gap-y-5" v-if="url.href.includes('admin')">
           <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
               <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/admin.svg" width="350"
                 height="350" alt="admin" title="admin" loading="lazy"
-                class="w-full  h-full object-contain object-center" />
+                class="object-contain object-center w-full h-full" />
             </div>
           </v-col>
           <v-col cols="12" md="5">
@@ -61,12 +61,12 @@ const goToLogin = () => {
           </v-col>
         </v-row>
 
-        <v-row class="gap-y-5 items-center justify-between" v-if="url.href.includes('patient')">
+        <v-row class="items-center justify-between gap-y-5" v-else-if="url.href.includes('patient')">
           <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
               <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/patient.svg" width="350"
                 height="350" alt="admin" title="admin" loading="lazy"
-                class="w-full  h-full object-contain object-center" />
+                class="object-contain object-center w-full h-full" />
             </div>
           </v-col>
           <v-col cols="12" md="5">
@@ -82,8 +82,8 @@ const goToLogin = () => {
           </v-col>
         </v-row>
 
-        <v-row class="gap-y-5 items-center" v-else>
-          <v-col cols="12" md="7" class="lg:block hidden">
+        <v-row class="items-center gap-y-5" v-else>
+          <v-col cols="12" md="7" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
               <NuxtImg
                 presets="defaults"
@@ -94,14 +94,14 @@ const goToLogin = () => {
                 alt="admin"
                 title="admin"
                 loading="lazy"
-                class="w-full h-full object-contain object-center"
+                class="object-contain object-center w-full h-full"
               />
             </div>
           </v-col>
           <v-col cols="12" md="5">
             <div>
               <p
-                class="font-bold-ff xl:text-2xl lg:text-xl text-lg text-main-clr mb-12"
+                class="mb-12 text-lg font-bold-ff xl:text-2xl lg:text-xl text-main-clr"
               >
                 Please, Select your user type to continue.
               </p>

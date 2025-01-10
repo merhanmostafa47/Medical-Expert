@@ -91,7 +91,7 @@ const loginAgain = () => {
 </script>
 
 <template>
-  <form class="flex justify-end flex-col w-full" @submit="submit">
+  <form class="flex flex-col justify-end w-full" @submit="submit">
 
     <base-input v-model="password" :label="t('FORMS.Labels.NewPassword')"
       :placeholder="t('FORMS.placeholders.newPassword')" type="password" class="!px-0" :error="passwordError" />
