@@ -4,7 +4,7 @@ const { t } = useI18n();
 
 const localePath = useLocalePath();
 
-const route =useRoute()
+const route = useRoute();
 
 // Set Page Meta Data
 useSeoMeta({
@@ -13,24 +13,34 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="h-[calc(100vh_-_128px)] lg:overflow-hidden">
-  
+  <main class="h-[calc(100vh_-_128px)]">
     <section>
       <v-container>
-        <v-row class="gap-y-5 items-center justify-between">
+        <v-row class="items-center justify-between gap-y-5">
           <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
-              <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/pharmacy.svg" width="350"
-                height="350" alt="admin" title="admin" loading="lazy"
-                class="w-full  h-full object-contain object-center" />
+              <NuxtImg
+                presets="defaults"
+                :placeholder="[_, _, 60, 8]"
+                src="media/images/auth/pharmacy.svg"
+                width="350"
+                height="350"
+                alt="admin"
+                title="admin"
+                loading="lazy"
+                class="object-contain object-center w-full h-full"
+              />
             </div>
           </v-col>
           <v-col cols="12" md="5">
             <div class="auth__form__wrapper">
               <div class="form__header">
                 <h1 class="auth__title">
-                  {{ route.query.type == 'verfiy-email' ? 
-                  t("TITLES.auth.verficationCode") : t("TITLES.auth.forgetPassword")}}
+                  {{
+                    route.query.type == "verfiy-email"
+                      ? t("TITLES.auth.verficationCode")
+                      : t("TITLES.auth.forgetPassword")
+                  }}
                 </h1>
 
                 <div class="auth__copy">
@@ -40,13 +50,15 @@ useSeoMeta({
                 </div>
               </div>
 
-              <OtpForm endpoint="pharmacy/verify" resetPasswordPath="new-password" resendOtpEndpoint="pharmacy/get-otp"/>
+              <OtpForm
+                endpoint="pharmacy/verify"
+                resetPasswordPath="new-password"
+                resendOtpEndpoint="pharmacy/get-otp"
+              />
             </div>
           </v-col>
-
         </v-row>
       </v-container>
     </section>
-  
   </main>
 </template>
