@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  layout:'auth-layout'
+})
+
 // I18n
 const { t } = useI18n();
 
@@ -16,9 +20,9 @@ useSeoMeta({
   
     <section>
       <v-container>
-        <v-row class="gap-y-5 items-center">
+        <v-row class="items-center gap-y-5">
           <v-col cols="12" md="7">
-            <h2 class="text-lg font-bold-ff mb-8 capitalize">
+            <h2 class="mb-8 text-lg capitalize font-bold-ff">
               {{ t("TITLES.auth.enterOtp") }}
             </h2>
             <div
@@ -27,7 +31,7 @@ useSeoMeta({
               data-aos-delay="300"
             >
               <p
-                class="font-medium-ff text-base text-light-default-text-clr w-full leading-loose md:w-5/6"
+                class="w-full text-base leading-loose font-medium-ff text-light-default-text-clr md:w-5/6"
               >
                 {{ t("TITLES.auth.sendOtp") }}
               </p>
@@ -44,7 +48,7 @@ useSeoMeta({
               alt="otp img"
               title="otp img"
               loading="lazy"
-              class="w-full md:h-72 h-60 object-contain object-center"
+              class="object-contain object-center w-full md:h-72 h-60"
             />
           </v-col>
         </v-row>

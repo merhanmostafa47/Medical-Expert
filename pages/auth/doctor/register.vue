@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  layout:'auth-layout'
+})
+
 // I18n
 const { t } = useI18n();
 const localePath = useLocalePath();
@@ -16,12 +20,12 @@ useSeoMeta({
   <main class="mt-0">
     <section>
       <v-container>
-        <v-row class="gap-y-5 items-center justify-between">
+        <v-row class="items-center justify-between gap-y-5">
           <v-col cols="12" md="6" class="hidden lg:block">
             <div class="h-[20rem] lg:h-[25rem] xl:h-[32rem]">
               <NuxtImg presets="defaults" :placeholder="[_, _, 60, 8]" src="media/images/auth/doctor.svg" width="350"
                 height="350" alt="admin" title="admin" loading="lazy"
-                class="w-full  h-full object-contain object-center" />
+                class="object-contain object-center w-full h-full" />
             </div>
           </v-col>
           <v-col cols="12" md="5">

@@ -13,7 +13,8 @@ authStore.loadAuthFromCookie();
 
 <template>
   <v-locale-provider :rtl="locale === 'ar'">
-    <v-app class="bg-opacity-bg">
+    <v-app>
+      <TheNavbar />
       <slot></slot>
     </v-app>
   </v-locale-provider>
