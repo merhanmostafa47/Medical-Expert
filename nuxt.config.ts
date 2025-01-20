@@ -2,7 +2,6 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  pages: true,
   // ============ App Configurations ============ //
   app: {
     baseURL: '/', 
