@@ -9,7 +9,7 @@ const { t } = useI18n();
     <v-main class="max-h-screen mx-3 overflow-y-auto lg:mx-6">
       <TopBar :title="t('TITLES.doctor.clinics')" />
       <!-- Top bar with title -->
-      <NuxtPage /><!-- Dynamically render child pages here -->
+      <nuxt-page /><!-- Dynamically render child pages here -->
     </v-main>
   </div>
 </template>
