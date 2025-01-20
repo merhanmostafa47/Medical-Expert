@@ -2,7 +2,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-
+  pages: true,
   // ============ App Configurations ============ //
   app: {
     baseURL: '/', 
@@ -59,9 +59,13 @@ export default defineNuxtConfig({
       { name: 'English', code: 'en', language: 'en-US', file: 'en.json', dir: 'ltr' },
       { name: 'العربية', code: 'ar', language: 'ar-EG', file: 'ar.json', dir: 'rtl' },
     ],
-    strategy: "prefix",
-    defaultLocale: "ar",
-    detectBrowserLanguage: false,
+    // strategy: "prefix",
+    defaultLocale: "en",
+    detectBrowserLanguage: {
+      useCookie: true,
+      // cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
     vueI18n: './i18n.config.ts',
   },
 
@@ -71,9 +75,9 @@ export default defineNuxtConfig({
     },
   },
   /* Set Rote Roles To Redirect To Default Locale Prefix If No Locale Prefix Is Exist */
-  routeRules: {
-    "/": { redirect: "/en" },
-  },
+  // routeRules: {
+  //   "/": { redirect: "/en" },
+  // },
 
   colorMode: {
     preference: 'light'

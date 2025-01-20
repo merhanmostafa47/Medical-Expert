@@ -15,7 +15,7 @@ authStore.loadAuthFromCookie();
   <v-locale-provider :rtl="locale === 'ar'">
     <v-app>
       <TheNavbar />
-      <slot></slot>
+   <NuxtPage/>
     </v-app>
   </v-locale-provider>
 </template>

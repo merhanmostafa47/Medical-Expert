@@ -34,6 +34,9 @@ export default {
         // Customs
         'border-clr': 'var(--border-clr)',
       },
+      boxShadow: {
+        '3xl': '0px 0px 24px 0px #01366680',
+      }
     },
   },
   plugins: [],

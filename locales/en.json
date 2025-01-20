@@ -20,11 +20,15 @@
       "newPassword": "new password",
       "new": "new password",
       "setPassword": "You Can Set Your Password"
+    },
+    "doctor":{
+      "clinics": "Clinics",
+      "patients": "patients"
     }
   },
   "MODALS": {
-    "auth":{
-      "passwordReset":"Password changed successfully"
+    "auth": {
+      "passwordReset": "Password changed successfully"
     }
   },
   "BUTTONS": {

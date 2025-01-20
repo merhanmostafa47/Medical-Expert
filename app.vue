@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 // I18n Localization Function
 const { t } = useI18n();
 
@@ -12,7 +13,8 @@ useHead({
 
 <template>
   <BaseLoader />
-  <NuxtLayout>
-    <NuxtPage />
+  
+  <NuxtLayout> <!-- Render layout -->
+    <NuxtPage /> <!-- Render page content -->
   </NuxtLayout>
 </template>

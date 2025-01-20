@@ -20,12 +20,16 @@
       "newPassword": "كلمة المرور الجديدة",
       "new": "كلمة المرور الجديدة",
       "setPassword": "يمكنك تعيين كلمة المرور الخاصة بك"
+    },
+    "doctor":{
+      "clinics": "العيادات",
+      "patients": "المرضى"
     }
   },
   "MODALS": {
-    "auth":{
-      "passwordReset":"تم تغيير كلمة المرور بنجاح"
-      }
+    "auth": {
+      "passwordReset": "تم تغيير كلمة المرور بنجاح"
+    }
   },
   "BUTTONS": {
     "auth": {
