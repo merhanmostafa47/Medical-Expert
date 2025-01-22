@@ -24,6 +24,9 @@ export default {
         'main-clr': 'var(--main-clr)',
         'secondary-clr': 'var(--secondary-clr)',
         'green-clr': 'var(--green-clr)',
+        'orange-clr': 'var(--orange-clr)',
+        'red-clr': 'var(--red-clr)',
+        'gray-clr': 'var(--gray-clr)',
         
         // Backgrounds
         'opacity-bg': 'var(--opacity-bg)',

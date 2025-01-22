@@ -29,7 +29,9 @@
   "MODALS": {
     "auth": {
       "passwordReset": "تم تغيير كلمة المرور بنجاح"
-    }
+    },
+    "delete": {
+      "message": "هل أنت متأكد من أنك تريد حذف {name}؟"
   },
   "BUTTONS": {
     "auth": {
@@ -40,9 +42,13 @@
       "goToHome": "الذهاب الي الرئيسية",
       "send": "ارسال",
       "save": "يحفظ",
-      "confirm": "jH;d]",
+      "confirm": "تاكيد",
       "continue": "استمرار"
-    }
+    },
+    "view": "عرض",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "cancel": "الغاء"
   },
   "FORMS": {
     "Labels": {

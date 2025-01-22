@@ -21,7 +21,7 @@
       "new": "new password",
       "setPassword": "You Can Set Your Password"
     },
-    "doctor":{
+    "doctor": {
       "clinics": "Clinics",
       "patients": "patients"
     }
@@ -29,6 +29,9 @@
   "MODALS": {
     "auth": {
       "passwordReset": "Password changed successfully"
+    },
+    "delete": {
+      "message": "Are you sure you want to delete {name}?"
     }
   },
   "BUTTONS": {
@@ -42,7 +45,11 @@
       "save": "save",
       "confirm": "confirm",
       "continue": "Continue"
-    }
+    },
+    "view": "view",
+    "edit": "edit",
+    "delete": "delete",
+    "cancel": "cancel"
   },
   "FORMS": {
     "Labels": {
