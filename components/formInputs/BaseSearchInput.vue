@@ -1,19 +1,20 @@
 <script setup>
 const props = defineProps({
-  model: { type: String },
   placeholder: { type: String },
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["search"]);
+
+const model = ref(null);
 </script>
 
 <template>
   <div class="search__wrapper">
     <Icon name="ri:search-line" size="20" class="text-secondary-clr" />
     <input
-      :value="model"
+      v-model="model"
       :placeholder="placeholder"
-      @change="emit('update:modelValue', $event.target.value)"
+      @change="emit('search', model)"
     />
   </div>
 </template>

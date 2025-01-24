@@ -12,6 +12,8 @@ const openModal = ref(false);
 const selectedClinicId = ref(null);
 const selectedClinicName = ref(null);
 const search = ref(null);
+const page = ref(1);
+const pagination = ref(null);
 
 const toggleModal = () => {
   openModal.value = !openModal.value;
@@ -37,8 +39,16 @@ const openDeleteModal = (id, name) => {
   toggleModal();
 };
 
-const { data } = await useBaseFetch("GET", "clinics");
+const { data } = await useBaseFetch("GET", "clinics",undefined, {
+  search: search.value,
+  page: page.value,
+});
+
 clinicsData.value = data.value;
+pagination.value = data.pagination;
+
+console.log(clinicsData.value);
+console.log(pagination.value );
 
 const deleteClinic = async () => {
   try {
@@ -48,6 +58,7 @@ const deleteClinic = async () => {
       locale
     );
     toast.success(data?.value?.message);
+    
     const { data: updatedData } = await useBaseFetch("GET", "clinics");
     clinicsData.value = updatedData.value;
 
@@ -56,11 +67,22 @@ const deleteClinic = async () => {
     toast.error(error?.data?.message);
   }
 };
+
+// watch(search.value, async (newValue) => {
+//   if (newValue) {
+//     const { data } = await useBaseFetch("GET", "clinics", { search: newValue });
+//     clinicsData.value = data.value;
+//   }
+// });
 </script>
 <template>
   <div class="px-5 content__wrapper">
     <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-      <BaseSearchInput placeholder="Search by clinic name and Doctor name " />
+      <BaseSearchInput
+        placeholder="Search by clinic name and Doctor name"
+        @search="search = $event"
+      />
+  
       <NuxtLink class="btn main-btn" :to="localePath('/doctor/clinics/add')">
         add a new clinic
         <Icon name="material-symbols:add" size="20" />
@@ -104,6 +126,10 @@ const deleteClinic = async () => {
         </tbody>
       </table>
     </div>
+    <div class="pagination__wrapper">
+      <v-pagination v-model="page" :length="4" rounded="0" />
+    </div>
+    
     <DeleteModal
       :openModal="openModal"
       @close="toggleModal"
