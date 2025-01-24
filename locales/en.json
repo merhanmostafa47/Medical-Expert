@@ -31,7 +31,7 @@
       "passwordReset": "Password changed successfully"
     },
     "delete": {
-      "message": "Are you sure you want to delete {name}?"
+      "message": "Are you sure you want to delete '{name}'?"
     }
   },
   "BUTTONS": {

@@ -7,6 +7,10 @@ const props = defineProps({
         type: Boolean,
         default: false
     },
+    name: {
+        type: String,
+        required: false
+    }
 })
 
 const emit = defineEmits(['close', 'delete'])
@@ -20,7 +24,7 @@ const emit = defineEmits(['close', 'delete'])
             </div>
 
             <p class="modal__copy">
-                {{ t('MODALS.auth.passwordReset') }}
+                {{ t('MODALS.delete.message',{name:name}) }}                                                           
             </p>
 
             <div class="btns__wrapper">
@@ -41,7 +45,7 @@ const emit = defineEmits(['close', 'delete'])
 }
 
 .modal__img{
-    @apply size-28 lg:size-32 p-6 rounded-full bg-opacity-bg flex justify-center items-center;
+    @apply size-28 lg:size-32   flex justify-center items-center;
     img{
         @apply size-full object-contain;
     }
@@ -52,6 +56,10 @@ const emit = defineEmits(['close', 'delete'])
 }
 
 .btns__wrapper{
-    @apply flex items-center justify-center gap-4;
+    @apply flex items-center justify-center gap-4 flex-wrap;
+
+    button{
+        @apply min-w-[150px];
+    }
 }
 </style>

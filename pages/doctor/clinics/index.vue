@@ -6,23 +6,33 @@ const localePath = useLocalePath();
 const openModal = ref(false);
 const selectedClinicId = ref(null);
 const selectedClinicName = ref(null);
-const toggleModal = (id, name) => {
+
+const toggleModal = () => {
+  openModal.value = !openModal.value;
+  console.log(openModal.value);
+};
+
+const openDeleteModal = (id, name) => {
   
   if(id){
     selectedClinicId.value = id
+    console.log(selectedClinicId.value);
   }
   
   if(name){
     selectedClinicName.value = name
+
+    console.log(selectedClinicName.value);
   }
   
-  openModal.value = !openModal.value;
-  
-  console.log(selectedClinicId.value);
+  toggleModal();
 };
 
 
-const deleteClinic = async (id) => {
+const { data: clinicList } =
+  await useBaseFetch("GET", "clinics");
+  
+const deleteClinic = async () => {
   const { data, error } = await useBaseFetch("POST", `clinics/delete/${selectedClinicId}`, locale);
   if (!error.value) {
     toast.success(data?.value?.message);
@@ -31,14 +41,11 @@ const deleteClinic = async (id) => {
   }
 };
 
-const { data: clinicList, pending: clinicListRequestIsPending } =
-  await useBaseFetch("GET", "clinics");
-
 // console.log(clinicList.value);
 </script>
 <template>
   <div class="px-5 content__wrapper">
-    <div class="flex items-center justify-between mb-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
       <BaseSearchInput placeholder="Search by clinic name and Doctor name " />
       <NuxtLink class="btn main-btn" :to="localePath('/doctor/clinics/add')">
         add a new clinic
@@ -58,14 +65,14 @@ const { data: clinicList, pending: clinicListRequestIsPending } =
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <td>Clinic name</td>
             <td>Doctor name</td>
             <td>Clinic phone number</td>
             <td>Working hours</td>
             <td>Clinic speciality</td>
-            <td><ClinicActionBtn/></td>
-          </tr>
+            <td><ClinicActionBtn @delete="openDeleteModal(1, 'clinic name')"/></td>
+          </tr> -->
 
           <tr v-for="clinic in clinicList" :key="clinic.id">
             <td>{{clinic.name}}</td>
@@ -73,11 +80,12 @@ const { data: clinicList, pending: clinicListRequestIsPending } =
             <td>{{clinic.phone_number}}</td>
             <td>{{ clinic.working_hours }}</td>
             <td>{{ clinic.speciality }}</td>
-            <td><ClinicActionBtn :id="clinic.id" @delete="deleteClinic(clinic.id)"/></td>
+            <td><ClinicActionBtn :id="clinic.id" @delete="deleteClinic(clinic.id, clinic.name)"/></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <DeleteModal :openModal="openModal" @close="toggleModal" @delete="toggleModal" :name="clinicList[selectedClinicId]?.name"/>
+    <DeleteModal :openModal="openModal" @close="toggleModal" @delete="deleteClinic()" :name="clinicList[selectedClinicId]?.name"/>
+    <!-- <DeleteModal openModal @close="toggleModal" @delete="deleteClinic()" :name="'clinic name'"/> -->
   </div>
 </template>

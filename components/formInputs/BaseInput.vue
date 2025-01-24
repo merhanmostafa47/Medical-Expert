@@ -174,7 +174,7 @@ label {
   @apply font-regular-ff lg:text-base text-sm text-main-clr mb-2 block capitalize;
 }
 .v-field__input {
-  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border border-secondary-clr;
+  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border !border-secondary-clr;
 }
 
 .v-field--variant-filled .v-field__overlay {
