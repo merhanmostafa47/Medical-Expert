@@ -36,7 +36,7 @@ const { data } = await useBaseFetch("GET", "clinics");
 clinicsData.value = data.value;
 
 const deleteClinic = async () => {
-  const { error } = await useBaseFetch(
+  const { data ,error } = await useBaseFetch(
     "POST",
     `clinics/delete/${selectedClinicId.value}`,
     locale
