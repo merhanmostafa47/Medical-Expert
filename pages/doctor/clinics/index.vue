@@ -36,17 +36,17 @@ const { data } = await useBaseFetch("GET", "clinics");
 clinicsData.value = data.value;
 
 const deleteClinic = async () => {
-  const { data ,error } = await useBaseFetch(
-    "POST",
-    `clinics/delete/${selectedClinicId.value}`,
-    locale
-  );
-  if (!error.value) {
+  try {
+    const { data } = await useBaseFetch(
+      "POST",
+      `clinics/delete/${selectedClinicId.value}`,
+      locale
+    );
     toast.success(data?.value?.message);
-    const { data } = await useBaseFetch("GET", "clinics");
-    clinicsData.value = data.value;
-  } else {
-    toast.error(error.value?.data?.message);
+    const refreshData = await useBaseFetch("GET", "clinics");
+    clinicsData.value = refreshData.data.value;
+  } catch (error) {
+    toast.error(error?.data?.message);
   }
 };
 

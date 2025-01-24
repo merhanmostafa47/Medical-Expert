@@ -19,7 +19,7 @@ const emit = defineEmits(["update:modelValue"]);
 </template>
 <style>
 .search__wrapper {
-  @apply bg-white w-[70%] lg:w-[50%] xl:w-[40%] shrink-0  p-4 border-secondary-clr  border flex items-center gap-1.5  rounded-2xl;
+  @apply bg-white w-full md:w-[70%] lg:w-[50%] xl:w-[40%] shrink-0  p-4 border-secondary-clr  border flex items-center gap-1.5  rounded-2xl;
 
   input {
     @apply size-full text-sm font-semiBold-ff text-secondary-clr placeholder:text-secondary-clr;
