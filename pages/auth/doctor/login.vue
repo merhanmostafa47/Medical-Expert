@@ -62,7 +62,7 @@ useSeoMeta({
               <LoginForm
                 endpoint="doctor/login"
                 forgetPasswordPath="forget-password"
-                :redirectPage="localePath('/doctor/clinics')"
+                redirectPage="/doctor/clinics"
               />
             </div>
           </v-col>
