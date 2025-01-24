@@ -3,6 +3,11 @@ import { useI18n } from "vue-i18n";
 const { t , locale } = useI18n();
 const localePath = useLocalePath();
 
+// Toast Composables
+import { useToast } from "vue-toastification";
+const toast = useToast();
+
+
 const openModal = ref(false);
 const selectedClinicId = ref(null);
 const selectedClinicName = ref(null);
@@ -81,7 +86,7 @@ console.log(clinicList.value);
             <td>{{ clinic.working_hours }}</td>
             <td>{{ clinic.speciality }}</td>
             <td>
-              <ClinicActionBtn :id="clinic.id" @delete="deleteClinic(clinic.id, clinic.name)" />
+              <ClinicActionBtn :id="clinic.id" @delete="openDeleteModal(clinic.id, clinic.name)" />
             </td>
           </tr>
         </tbody>
