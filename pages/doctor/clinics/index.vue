@@ -39,10 +39,7 @@ const openDeleteModal = (id, name) => {
   toggleModal();
 };
 
-const { data } = await useBaseFetch("GET", "clinics",undefined, {
-  search: search.value,
-  page: page.value,
-});
+const { data } = await useBaseFetch("GET", "clinics");
 
 clinicsData.value = data.value;
 pagination.value = data.pagination;
