@@ -78,7 +78,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     });
 
     router.push({
-      path: c ?? localePath("/dashbord"),
+      path: redirectPage ?? localePath("/dashbord"),
     });
 
   } else {
