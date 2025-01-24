@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from "vue-i18n";
-const { t } = useI18n();
+const { t.locale } = useI18n();
 const localePath = useLocalePath();
 
 const openModal = ref(false);
@@ -20,7 +20,6 @@ const openDeleteModal = (id, name) => {
 
   if (name) {
     selectedClinicName.value = name;
-
     console.log(selectedClinicName.value);
   }
 
@@ -75,7 +74,7 @@ console.log(clinicList.value);
             <td><ClinicActionBtn @delete="openDeleteModal(1, 'clinic name')"/></td>
           </tr> -->
 
-          <tr v-for="clinic in clinicList" :key="clinic.id">
+          <tr v-for="clinic in clinicList.data" :key="clinic.id">
             <td>{{ clinic.name }}</td>
             <td>{{ clinic.doctor_name }}</td>
             <td>{{ clinic.phone_number }}</td>
