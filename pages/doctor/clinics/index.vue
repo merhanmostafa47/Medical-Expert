@@ -33,7 +33,7 @@ const openDeleteModal = (id, name) => {
 
 const getClinics= async () => {
   const { data: clinicList } = await useBaseFetch("GET", "clinics");
-  clinicsData.value = clinicList.data;
+  clinicsData.value = clinicList;
 }
 // const { data: clinicList } = await useBaseFetch("GET", "clinics");
 
@@ -87,7 +87,7 @@ onMounted(() => {
             <td><ClinicActionBtn @delete="openDeleteModal(1, 'clinic name')"/></td>
           </tr> -->
 
-          <tr v-for="clinic in clinicsData" :key="clinic.id">
+          <tr v-for="clinic in clinicsData.data" :key="clinic.id">
             <td>{{ clinic.name }}</td>
             <td>{{ clinic.doctor_name }}</td>
             <td>{{ clinic.phone_number }}</td>
