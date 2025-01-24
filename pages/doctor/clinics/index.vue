@@ -45,6 +45,8 @@ const deleteClinic = async () => {
     toast.success(data?.value?.message);
     const {data: updatedData} = await useBaseFetch("GET", "clinics");
     clinicsData.value = updatedData.value ;
+
+    toggleModal();
   } catch (error) {
     toast.error(error?.data?.message);
   }
