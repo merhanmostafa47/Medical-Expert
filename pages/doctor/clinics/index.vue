@@ -31,7 +31,11 @@ const openDeleteModal = (id, name) => {
   toggleModal();
 };
 
-const { data: clinicList } = await useBaseFetch("GET", "clinics");
+const getClinics= async () => {
+  const { data: clinicList } = await useBaseFetch("GET", "clinics");
+  return clinicList;
+}
+// const { data: clinicList } = await useBaseFetch("GET", "clinics");
 
 const deleteClinic = async () => {
   const { data, error } = await useBaseFetch(
@@ -41,12 +45,15 @@ const deleteClinic = async () => {
   );
   if (!error.value) {
     toast.success(data?.value?.message);
+    getClinics();
   } else {
     toast.error(error.value?.data?.message);
   }
 };
 
-console.log(clinicList.value);
+onMounted(() => {
+  getClinics();
+})
 </script>
 <template>
   <div class="px-5 content__wrapper">
