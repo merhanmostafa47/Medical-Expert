@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from "vue-i18n";
-const { t , locale } = useI18n();
+const { t, locale } = useI18n();
 const localePath = useLocalePath();
 
 // Toast Composables
@@ -11,10 +11,16 @@ const clinicsData = ref(null);
 const openModal = ref(false);
 const selectedClinicId = ref(null);
 const selectedClinicName = ref(null);
+const search = ref(null);
 
 const toggleModal = () => {
   openModal.value = !openModal.value;
-  console.log(openModal.value);
+};
+
+const resetData = () => {
+  openModal.value = false;
+  selectedClinicId.value = null;
+  selectedClinicName.value = null;
 };
 
 const openDeleteModal = (id, name) => {
@@ -31,7 +37,6 @@ const openDeleteModal = (id, name) => {
   toggleModal();
 };
 
-
 const { data } = await useBaseFetch("GET", "clinics");
 clinicsData.value = data.value;
 
@@ -43,16 +48,14 @@ const deleteClinic = async () => {
       locale
     );
     toast.success(data?.value?.message);
-    const {data: updatedData} = await useBaseFetch("GET", "clinics");
-    clinicsData.value = updatedData.value ;
+    const { data: updatedData } = await useBaseFetch("GET", "clinics");
+    clinicsData.value = updatedData.value;
 
-    toggleModal();
+    resetData();
   } catch (error) {
     toast.error(error?.data?.message);
   }
 };
-
-
 </script>
 <template>
   <div class="px-5 content__wrapper">
@@ -92,14 +95,21 @@ const deleteClinic = async () => {
             <td>{{ clinic.working_hours }}</td>
             <td>{{ clinic.speciality }}</td>
             <td>
-              <ClinicActionBtn :id="clinic.id" @delete="openDeleteModal(clinic.id, clinic.name)" />
+              <ClinicActionBtn
+                :id="clinic.id"
+                @delete="openDeleteModal(clinic.id, clinic.name)"
+              />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <DeleteModal :openModal="openModal" @close="toggleModal" @delete="deleteClinic()"
-      :name="selectedClinicName" />
+    <DeleteModal
+      :openModal="openModal"
+      @close="toggleModal"
+      @delete="deleteClinic()"
+      :name="selectedClinicName"
+    />
     <!-- <DeleteModal openModal @close="toggleModal" @delete="deleteClinic()" :name="'clinic name'"/> -->
   </div>
 </template>
