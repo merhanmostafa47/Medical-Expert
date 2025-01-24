@@ -75,7 +75,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
       ...authStore.getAuthUserData,
       name: data?.value?.data?.name,
       email: data?.value?.data?.email,
-      token: data?.value?.token,
+      token: data?.value?.data?.token,
     });
 
     router.push({
