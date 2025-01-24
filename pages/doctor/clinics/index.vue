@@ -42,7 +42,7 @@ const openDeleteModal = (id, name) => {
 const { data } = await useBaseFetch("GET", "clinics");
 
 clinicsData.value = data.value;
-pagination.value = data.pagination;
+pagination.value = data.value.pagination;
 
 console.log(clinicsData.value);
 console.log(pagination.value );
@@ -124,7 +124,7 @@ const deleteClinic = async () => {
       </table>
     </div>
     <div class="pagination__wrapper">
-      <v-pagination v-model="page" :length="4" rounded="0" />
+      <v-pagination v-model="page" :length="pagination.last_page" rounded="0" />
     </div>
     
     <DeleteModal
