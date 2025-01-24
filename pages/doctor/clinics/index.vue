@@ -13,27 +13,28 @@ const toggleModal = () => {
 };
 
 const openDeleteModal = (id, name) => {
-  
-  if(id){
-    selectedClinicId.value = id
+  if (id) {
+    selectedClinicId.value = id;
     console.log(selectedClinicId.value);
   }
-  
-  if(name){
-    selectedClinicName.value = name
+
+  if (name) {
+    selectedClinicName.value = name;
 
     console.log(selectedClinicName.value);
   }
-  
+
   toggleModal();
 };
 
+const { data: clinicList } = await useBaseFetch("GET", "clinics");
 
-const { data: clinicList } =
-  await useBaseFetch("GET", "clinics");
-  
 const deleteClinic = async () => {
-  const { data, error } = await useBaseFetch("POST", `clinics/delete/${selectedClinicId}`, locale);
+  const { data, error } = await useBaseFetch(
+    "POST",
+    `clinics/delete/${selectedClinicId}`,
+    locale
+  );
   if (!error.value) {
     toast.success(data?.value?.message);
   } else {
@@ -41,7 +42,7 @@ const deleteClinic = async () => {
   }
 };
 
-// console.log(clinicList.value);
+console.log(clinicList.value);
 </script>
 <template>
   <div class="px-5 content__wrapper">
@@ -75,17 +76,27 @@ const deleteClinic = async () => {
           </tr> -->
 
           <tr v-for="clinic in clinicList" :key="clinic.id">
-            <td>{{clinic.name}}</td>
-            <td>{{clinic.doctor_name}}</td>
-            <td>{{clinic.phone_number}}</td>
+            <td>{{ clinic.name }}</td>
+            <td>{{ clinic.doctor_name }}</td>
+            <td>{{ clinic.phone_number }}</td>
             <td>{{ clinic.working_hours }}</td>
             <td>{{ clinic.speciality }}</td>
-            <td><ClinicActionBtn :id="clinic.id" @delete="deleteClinic(clinic.id, clinic.name)"/></td>
+            <td>
+              <ClinicActionBtn
+                :id="clinic.id"
+                @delete="deleteClinic(clinic.id, clinic.name)"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <DeleteModal :openModal="openModal" @close="toggleModal" @delete="deleteClinic()" :name="clinicList[selectedClinicId]?.name"/>
+    <DeleteModal
+      :openModal="openModal"
+      @close="toggleModal"
+      @delete="deleteClinic()"
+      :name="clinicList[selectedClinicId]?.name"
+    />
     <!-- <DeleteModal openModal @close="toggleModal" @delete="deleteClinic()" :name="'clinic name'"/> -->
   </div>
 </template>
