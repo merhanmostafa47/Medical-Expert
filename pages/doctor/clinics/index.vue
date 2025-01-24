@@ -43,8 +43,8 @@ const deleteClinic = async () => {
       locale
     );
     toast.success(data?.value?.message);
-    const refreshData = await useBaseFetch("GET", "clinics");
-    clinicsData.value = refreshData.data.value;
+    const {data: updatedData} = await useBaseFetch("GET", "clinics");
+    clinicsData.value = updatedData.value ;
   } catch (error) {
     toast.error(error?.data?.message);
   }
