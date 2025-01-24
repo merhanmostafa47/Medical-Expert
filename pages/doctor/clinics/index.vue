@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from "vue-i18n";
-const { t.locale } = useI18n();
+const { t , locale } = useI18n();
 const localePath = useLocalePath();
 
 const openModal = ref(false);
@@ -81,21 +81,14 @@ console.log(clinicList.value);
             <td>{{ clinic.working_hours }}</td>
             <td>{{ clinic.speciality }}</td>
             <td>
-              <ClinicActionBtn
-                :id="clinic.id"
-                @delete="deleteClinic(clinic.id, clinic.name)"
-              />
+              <ClinicActionBtn :id="clinic.id" @delete="deleteClinic(clinic.id, clinic.name)" />
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <DeleteModal
-      :openModal="openModal"
-      @close="toggleModal"
-      @delete="deleteClinic()"
-      :name="clinicList[selectedClinicId]?.name"
-    />
+    <DeleteModal :openModal="openModal" @close="toggleModal" @delete="deleteClinic()"
+      :name="clinicList[selectedClinicId]?.name" />
     <!-- <DeleteModal openModal @close="toggleModal" @delete="deleteClinic()" :name="'clinic name'"/> -->
   </div>
 </template>
