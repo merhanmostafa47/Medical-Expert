@@ -7,7 +7,7 @@ const localePath = useLocalePath();
 import { useToast } from "vue-toastification";
 const toast = useToast();
 
-
+const clinicsData = ref(null);
 const openModal = ref(false);
 const selectedClinicId = ref(null);
 const selectedClinicName = ref(null);
@@ -33,7 +33,7 @@ const openDeleteModal = (id, name) => {
 
 const getClinics= async () => {
   const { data: clinicList } = await useBaseFetch("GET", "clinics");
-  return clinicList;
+  clinicsData.value = clinicList.data;
 }
 // const { data: clinicList } = await useBaseFetch("GET", "clinics");
 
@@ -53,6 +53,7 @@ const deleteClinic = async () => {
 
 onMounted(() => {
   getClinics();
+  console.log(clinicsData)
 })
 </script>
 <template>
@@ -86,7 +87,7 @@ onMounted(() => {
             <td><ClinicActionBtn @delete="openDeleteModal(1, 'clinic name')"/></td>
           </tr> -->
 
-          <tr v-for="clinic in clinicList.data" :key="clinic.id">
+          <tr v-for="clinic in clinicsData" :key="clinic.id">
             <td>{{ clinic.name }}</td>
             <td>{{ clinic.doctor_name }}</td>
             <td>{{ clinic.phone_number }}</td>
