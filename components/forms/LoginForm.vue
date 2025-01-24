@@ -10,6 +10,7 @@ const props = defineProps({
   },
   redirectPage: {
     type: String,
+    required: false
   }
 })
 
@@ -78,7 +79,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     });
 
     router.push({
-      path: redirectPage ?? localePath("/dashbord"),
+      path: props.redirectPage ?? localePath("/dashbord"),
     });
 
   } else {
