@@ -36,7 +36,7 @@ const { data: clinicList } = await useBaseFetch("GET", "clinics");
 const deleteClinic = async () => {
   const { data, error } = await useBaseFetch(
     "POST",
-    `clinics/delete/${selectedClinicId}`,
+    `clinics/delete/${selectedClinicId.value}`,
     locale
   );
   if (!error.value) {
@@ -93,7 +93,7 @@ console.log(clinicList.value);
       </table>
     </div>
     <DeleteModal :openModal="openModal" @close="toggleModal" @delete="deleteClinic()"
-      :name="clinicList[selectedClinicId]?.name" />
+      :name="selectedClinicName" />
     <!-- <DeleteModal openModal @close="toggleModal" @delete="deleteClinic()" :name="'clinic name'"/> -->
   </div>
 </template>

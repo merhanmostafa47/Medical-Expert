@@ -30,7 +30,7 @@ const emit = defineEmits(["close", "delete"]);
         <button class="btn btn--danger" @click="emit('delete')">
           {{ t("BUTTONS.delete") }}
         </button>
-        <button class="btn btn--gray" @click="emit('close')">
+        <button class="btn btn--gray" @click.stop="emit('close')">
           {{ t("BUTTONS.cancel") }}
         </button>
       </div>
