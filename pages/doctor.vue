@@ -3,7 +3,7 @@ import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 </script>
 <template>
-  <div>
+  <div class="relative">
     <DocSidebar />
     <!-- Static Sidebar -->
     <v-main class="max-h-screen mx-3 overflow-y-auto lg:mx-6">

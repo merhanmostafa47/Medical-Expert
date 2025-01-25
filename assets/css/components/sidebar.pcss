@@ -16,13 +16,7 @@
   .nav__routes.v-list {
     @apply !bg-transparent text-white my-6;
 
-    .v-list-item {
-      @apply !border-none gap-3 px-2;
-
-      .v-list-item-title {
-        @apply font-semiBold-ff capitalize;
-      }
-    }
+  
     .v-list-item--active {
       @apply text-main-clr bg-opacity-bg rounded-xl;
 
@@ -33,7 +27,20 @@
     }
   }
 
+  .v-list-item,
+  .logout__btn {
+    @apply !border-none gap-3 px-2;
+
+    .v-list-item-title {
+      @apply font-semiBold-ff capitalize;
+    }
+  }
+
   .v-list-item__overlay {
     @apply !hidden;
+  }
+
+  .logout__btn{
+    @apply absolute bottom-4 p-0 text-white capitalize text-sm; 
   }
 }

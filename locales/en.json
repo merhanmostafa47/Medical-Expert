@@ -24,7 +24,8 @@
     "doctor": {
       "clinics": "Clinics",
       "patients": "patients"
-    }
+    },
+    "logout": "logout"
   },
   "MODALS": {
     "auth": {

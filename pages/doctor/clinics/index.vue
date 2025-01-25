@@ -74,6 +74,13 @@ watch(search.value, async (newValue) => {
     clinicsData.value = data.value;
   }
 });
+
+watch(page.value, async (newValue) => {
+  if (newValue) {
+    const { data } = await useBaseFetch("GET", "clinics", { page: newValue });
+    clinicsData.value = data.value;
+  }
+});
 </script>
 <template>
   <div class="px-5 content__wrapper">
@@ -82,9 +89,9 @@ watch(search.value, async (newValue) => {
         placeholder="Search by clinic name and Doctor name"
         @search="search = $event"
       />
-      
+
       {{ search }}
-      
+
       <NuxtLink class="btn main-btn" :to="localePath('/doctor/clinics/add')">
         add a new clinic
         <Icon name="material-symbols:add" size="20" />
@@ -103,16 +110,18 @@ watch(search.value, async (newValue) => {
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
+          <tr>
             <td>Clinic name</td>
             <td>Doctor name</td>
             <td>Clinic phone number</td>
             <td>Working hours</td>
             <td>Clinic speciality</td>
-            <td><ClinicActionBtn @delete="openDeleteModal(1, 'clinic name')"/></td>
-          </tr> -->
+            <td>
+              <ClinicActionBtn @delete="openDeleteModal(1, 'clinic name')" />
+            </td>
+          </tr>
 
-          <tr v-for="clinic in clinicsData.data" :key="clinic.id">
+          <!-- <tr v-for="clinic in clinicsData.data" :key="clinic.id">
             <td>{{ clinic.name }}</td>
             <td>{{ clinic.doctor_name }}</td>
             <td>{{ clinic.phone_number }}</td>
@@ -124,19 +133,25 @@ watch(search.value, async (newValue) => {
                 @delete="openDeleteModal(clinic.id, clinic.name)"
               />
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
-    
+
     <div class="pagination__wrapper">
-      <v-pagination
-        v-model="page"
-        :length="clinicsData.pagination.last_page"
-        rounded="0"
-        next-icon="material-symbols:keyboard-arrow-right"
-      />
+      <v-pagination v-model="page" :length="5" rounded="0">
+        <template #next>
+          <button type="button" aria-label="Previous page" aria-disabled="true" @click="page++">
+            <Icon name="material-symbols:keyboard-arrow-right" size="16" />
+          </button>
+        </template>
+      </v-pagination>
     </div>
+
+
+    <button class="fixed px-4 py-2 text-xs bg-white border top-1/4 end-0 border-main-clr text-main-clr rounded-ss-lg rounded-es-lg" @click="openFilteridebar()">
+      filter
+    </button>
 
     <DeleteModal
       :openModal="openModal"
@@ -144,6 +159,11 @@ watch(search.value, async (newValue) => {
       @delete="deleteClinic()"
       :name="selectedClinicName"
     />
+
+    <BaseSidebar :isOpen="isFilterSidebarOpen" @close="closeFilterSidebar">
+lorem100  
+    </BaseSidebar>
+      
     <!-- <DeleteModal openModal @close="toggleModal" @delete="deleteClinic()" :name="'clinic name'"/> -->
   </div>
 </template>

@@ -7,8 +7,9 @@ import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 const localePath = useLocalePath();
 
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
+const router = useRouter();
 
 const isLargeScreen = useMediaQuery("(max-width: 1024px)");
 watch(
@@ -19,6 +20,14 @@ watch(
 if (isLargeScreen) {
   rail.value = true;
 }
+
+import { useAuthStore } from "@/stores/AuthData.js";
+const authStore = useAuthStore();
+
+const logout = () => {
+  authStore.resetAuthData();
+  router.push(localePath("/"));
+};
 </script>
 
 <template>
@@ -72,5 +81,19 @@ if (isLargeScreen) {
         </v-list-item>
       </NuxtLink>
     </v-list>
+    <button @click.stop="logout" class="logout__btn">
+      <v-list-item
+        class="px-2"
+        :title="t('TITLES.logout')"
+      >
+        <template v-slot:prepend>
+          <Icon
+            name="material-symbols:logout"
+            size="20"
+            class="text-white rotate-180"
+          />
+        </template>
+      </v-list-item>
+    </button>
   </v-navigation-drawer>
 </template>

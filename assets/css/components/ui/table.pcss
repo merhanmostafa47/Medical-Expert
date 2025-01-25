@@ -1,5 +1,9 @@
 .table__wrapper {
-  @apply w-full overflow-x-auto px-1;
+  @apply w-full overflow-x-auto px-1 ;
+  
+  &::-webkit-scrollbar {
+    @apply hidden;
+  }
 
   table {
     @apply w-full border-spacing-4;

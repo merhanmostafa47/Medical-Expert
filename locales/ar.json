@@ -24,7 +24,8 @@
     "doctor": {
       "clinics": "العيادات",
       "patients": "المرضى"
-    }
+    },
+    "logout": "تسجيل الخروج"
   },
   "MODALS": {
     "auth": {
