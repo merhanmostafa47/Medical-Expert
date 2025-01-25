@@ -68,12 +68,12 @@ const deleteClinic = async () => {
   }
 };
 
-// watch(search.value, async (newValue) => {
-//   if (newValue) {
-//     const { data } = await useBaseFetch("GET", "clinics", { search: newValue });
-//     clinicsData.value = data.value;
-//   }
-// });
+watch(search.value, async (newValue) => {
+  if (newValue) {
+    const { data } = await useBaseFetch("GET", "clinics", { search: newValue });
+    clinicsData.value = data.value;
+  }
+});
 </script>
 <template>
   <div class="px-5 content__wrapper">
@@ -82,7 +82,8 @@ const deleteClinic = async () => {
         placeholder="Search by clinic name and Doctor name"
         @search="search = $event"
       />
-
+      {{ search }}
+      
       <NuxtLink class="btn main-btn" :to="localePath('/doctor/clinics/add')">
         add a new clinic
         <Icon name="material-symbols:add" size="20" />
@@ -126,8 +127,14 @@ const deleteClinic = async () => {
         </tbody>
       </table>
     </div>
+    
     <div class="pagination__wrapper">
-      <v-pagination v-model="page" :length="pagination.last_page" rounded="0" />
+      <v-pagination
+        v-model="page"
+        :length="pagination.last_page"
+        rounded="0"
+        next-icon="material-symbols:keyboard-arrow-right"
+      />
     </div>
 
     <DeleteModal
