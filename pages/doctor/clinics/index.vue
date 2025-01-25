@@ -45,7 +45,7 @@ const { data } = await useBaseFetch("GET", "clinics", undefined, {
 });
 
 clinicsData.value = data.value;
-pagination.value = data.value.pagination;
+// pagination.value = data.value.pagination;
 
 console.log(clinicsData.value);
 console.log(pagination.value);
@@ -82,6 +82,7 @@ watch(search.value, async (newValue) => {
         placeholder="Search by clinic name and Doctor name"
         @search="search = $event"
       />
+      
       {{ search }}
       
       <NuxtLink class="btn main-btn" :to="localePath('/doctor/clinics/add')">
@@ -131,7 +132,7 @@ watch(search.value, async (newValue) => {
     <div class="pagination__wrapper">
       <v-pagination
         v-model="page"
-        :length="pagination.last_page"
+        :length="clinicsData.pagination.last_page"
         rounded="0"
         next-icon="material-symbols:keyboard-arrow-right"
       />
