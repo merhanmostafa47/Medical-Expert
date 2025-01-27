@@ -9,6 +9,7 @@ const toast = useToast();
 
 const clinicsData = ref(null);
 const openModal = ref(false);
+const isFilterSidebarOpen = ref(false);
 const selectedClinicId = ref(null);
 const selectedClinicName = ref(null);
 const search = ref(null);
@@ -37,6 +38,10 @@ const openDeleteModal = (id, name) => {
   }
 
   toggleModal();
+};
+
+const toggleFilterSidebar = () => {
+  isFilterSidebarOpen.value = !isFilterSidebarOpen.value;
 };
 
 const { data } = await useBaseFetch("GET", "clinics", undefined, {
@@ -141,15 +146,22 @@ watch(page.value, async (newValue) => {
     <div class="pagination__wrapper">
       <v-pagination v-model="page" :length="5" rounded="0">
         <template #next>
-          <button type="button" aria-label="Previous page" aria-disabled="true" @click="page++">
+          <button
+            type="button"
+            aria-label="Previous page"
+            aria-disabled="true"
+            @click="page++"
+          >
             <Icon name="material-symbols:keyboard-arrow-right" size="16" />
           </button>
         </template>
       </v-pagination>
     </div>
 
-
-    <button class="fixed px-4 py-2 text-xs bg-white border top-1/4 end-0 border-main-clr text-main-clr rounded-ss-lg rounded-es-lg" @click="openFilteridebar()">
+    <button
+      class="fixed px-4 py-2 text-xs capitalize bg-white border top-1/4 end-0 border-main-clr text-main-clr rounded-ss-lg rounded-es-lg"
+      @click="toggleFilterSidebar()"
+    >
       filter
     </button>
 
@@ -160,10 +172,51 @@ watch(page.value, async (newValue) => {
       :name="selectedClinicName"
     />
 
-    <BaseSidebar :isOpen="isFilterSidebarOpen" @close="closeFilterSidebar">
-lorem100  
+    <BaseSidebar :isOpen="isFilterSidebarOpen">
+      <div class="relative">
+        <div class="flex items-center justify-between mb-8">
+          <h3
+            class="text-base font-bold capitalize lg:text-lg xl:text-xl text-main-clr"
+          >
+            filter by
+          </h3>
+          <button @click.stop="toggleFilterSidebar">
+            <Icon name="carbon:close-outline" size="20" class="text-gray-clr" />
+          </button>
+        </div>
+        <h3
+          class="mb-5 font-semibold capitalize text-smlg:text-base xl:text-lg text-secondary-clr"
+        >
+          Specialty
+        </h3>
+        <div class="flex flex-col items-start gap-4 text-gray-clr">
+          <div class="flex items-center gap-2 ">
+            <input type="checkbox" id="cardiology" name="cardiology" />
+            <label for="cardiology">Cardiology</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="neurology" name="neurology" />
+            <label for="neurology">Neurology</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="oncology" name="oncology" />
+            <label for="oncology">Oncology</label>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="pediatrics" name="pediatrics" />
+            <label for="pediatrics">Pediatrics</label>
+          </div>
+        </div>
+        <div class="absolute inset-0 bottom-0 p-5 bg-opacity-bg">
+          <button
+            class="w-full btn bordered-btn"
+          >
+            reset filter
+          </button>
+        </div>
+      </div>
     </BaseSidebar>
-      
+
     <!-- <DeleteModal openModal @close="toggleModal" @delete="deleteClinic()" :name="'clinic name'"/> -->
   </div>
 </template>
