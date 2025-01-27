@@ -74,8 +74,10 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     authStore.setAuthedData({
       ...authStore.getAuthUserData,
       name: data?.value?.data?.name,
+      avatar: data?.value?.data?.avatar,
       email: data?.value?.data?.email,
       token: data?.value?.data?.token,
+      role: data?.value?.data?.role,
     });
 
     router.push({

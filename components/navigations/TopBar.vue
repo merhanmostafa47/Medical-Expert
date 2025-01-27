@@ -9,6 +9,10 @@ const props = defineProps({
     required: false,
   },
 });
+
+// Set authed data in store
+import { useAuthStore } from "@/stores/AuthData.js";
+const authStore = useAuthStore();
 </script>
 <template>
   <div class="topbar">
@@ -21,13 +25,13 @@ const props = defineProps({
       </button>
       <div class="user__info">
         <div class="info">
-          <h3 class="user_name">Ahmed Tarek</h3>
+          <h3 class="user_name">{{authStore.userName}}</h3>
           <p class="user_work">
-            Doctor
+            {{authStore.userRole}}
           </p>
         </div>
         <div class="user__img">
-          <NuxtImg src="/media/images/doctor.svg" alt="user" />
+          <NuxtImg :src="authStore.avatar ?? '/media/icons/user-placeholder.png'"alt="user" />
         </div>
       </div>
     </div>
