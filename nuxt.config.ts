@@ -10,12 +10,20 @@ export default defineNuxtConfig({
     },
   },
 
+  imports: {
+    dirs: ["plugins"],
+  },
+
   nitro: {
     preset: "vercel", // Important for Vercel deployment
   },
 
   // ============ Project Css & Scripts Files ============ //
-  css: ["@/assets/css/main.pcss", "@/assets/css/tailwind.pcss"],
+  css: [
+    "@/assets/css/main.pcss",
+    "@mdi/font/css/materialdesignicons.min.css",
+    "@/assets/css/tailwind.pcss",
+  ],
 
   // ============ Plugins Files Registeration ============ //
   plugins: ["@/plugins/i18n.client.js", "@/plugins/vue-pagination.js"],
@@ -30,14 +38,36 @@ export default defineNuxtConfig({
     },
     "@nuxtjs/i18n",
     "@nuxtjs/tailwindcss",
-    "@pinia/nuxt",
     "@nuxtjs/color-mode",
     "@nuxt/image",
     "nuxt-icon",
     "@vueuse/nuxt",
     "@vee-validate/nuxt",
     "@nuxtjs/google-fonts",
-    "@nuxtjs/ngrok",
+    [
+      '@nuxt/image',
+      {
+        // Image Quality
+        quality: 80,
+        format: ['webp', 'png', 'jpeg'],
+        // The screen sizes predefined by `@nuxt/image`:
+        screens: {
+          xs: 320,
+          sm: 640,
+          md: 768,
+          lg: 1024,
+          xl: 1280,
+          xxl: 1536,
+          '2xl': 1536
+        },
+      }
+    ],
+    [
+      "@pinia/nuxt",
+      {
+        autoImports: ["defineStore", "storeToRefs", "acceptHMRUpdate"],
+      },
+    ],
   ],
 
   // ============ Modules Configurations ============ //
@@ -107,10 +137,6 @@ export default defineNuxtConfig({
 
   veeValidate: {
     autoImports: true,
-  },
-
-  ngrok: {
-    authtoken: process.env.NGROK_AUTHTOKEN,
   },
 
   // ============ Postcss & Tailwind Configurations ============ //
