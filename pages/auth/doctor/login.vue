@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  layout:'auth-layout'
+})
+
 // I18n
 const { t } = useI18n();
 
@@ -58,6 +62,7 @@ useSeoMeta({
               <LoginForm
                 endpoint="doctor/login"
                 forgetPasswordPath="forget-password"
+                :redirectPage="localePath('/doctor/clinics')"
               />
             </div>
           </v-col>

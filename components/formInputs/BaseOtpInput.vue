@@ -84,7 +84,7 @@ const props = defineProps({
   <!-- ======== End::OTP Input Type  ======== -->
 </template>
 
-<style>
+<style lang="postcss">
 .otp_error {
   @apply text-red-700 text-center text-sm w-full inline-block;
 }

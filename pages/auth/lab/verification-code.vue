@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  layout:'auth-layout'
+})
+
 // I18n
 const { t } = useI18n();
 

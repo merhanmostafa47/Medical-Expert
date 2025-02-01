@@ -1,9 +1,8 @@
 <script setup>
 // I18n
 const { locale, locales } = useI18n();
-const alternativeLocale = computed(() => {
-  return locales.value.find((item) => item.code !== locale.value);
-});
+
+const { t } = useI18n();
 
 // Auth Store
 import { useAuthStore } from "@/stores/AuthData.js";
@@ -13,9 +12,8 @@ authStore.loadAuthFromCookie();
 
 <template>
   <v-locale-provider :rtl="locale === 'ar'">
-    <v-app>
-      <TheNavbar />
-      <slot></slot>
+    <v-app class="bg-opacity-bg">
+      <slot />
     </v-app>
   </v-locale-provider>
 </template>

@@ -1,0 +1,35 @@
+.topbar{
+    @apply bg-main-clr py-2 lg:py-4 px-8 rounded-2xl my-2 lg:my-4 flex items-center justify-between; 
+
+    .page_title{
+        @apply text-opacity-bg font-semiBold-ff lg:text-lg text-base;
+    }
+
+    .notifications_and_profile{
+        @apply flex items-center gap-8
+    }
+
+    .user__info{
+        @apply flex items-center gap-2;
+
+    .info{
+        @apply hidden lg:flex items-center justify-center flex-col text-white capitalize;
+
+        .user_name{
+            @apply font-semiBold-ff text-base
+        }
+
+        .user_work{
+            @apply  text-sm
+
+        }
+    }
+    .user__img{
+        @apply size-8 lg:size-10 rounded-full  bg-white overflow-hidden;
+
+        img{
+            @apply size-full object-cover
+        }
+    }
+    }
+}

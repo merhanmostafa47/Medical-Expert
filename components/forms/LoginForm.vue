@@ -7,6 +7,10 @@ const props = defineProps({
   forgetPasswordPath: {
     type: String,
     required: true
+  },
+  redirectPage: {
+    type: String,
+    required: false
   }
 })
 
@@ -70,12 +74,14 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     authStore.setAuthedData({
       ...authStore.getAuthUserData,
       name: data?.value?.data?.name,
+      avatar: data?.value?.data?.image,
       email: data?.value?.data?.email,
       token: data?.value?.token,
+      role: data?.value?.role,
     });
 
     router.push({
-      path: localePath("/dashbord"),
+      path: props.redirectPage ?? localePath("/dashbord"),
     });
 
   } else {
@@ -86,7 +92,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
 </script>
 
 <template>
-  <form class="flex justify-end flex-col w-full" @submit="submit">
+  <form class="flex flex-col justify-end w-full" @submit="submit">
 
     <base-input v-model="email" :label="t('FORMS.Labels.email')" :placeholder="t('FORMS.Placeholders.email')"
       type="email" class="!px-0" :error="emailError" />
@@ -97,12 +103,12 @@ const submit = handleSubmit(async (values, { resetForm }) => {
       <div class="flex items-center justify-between">
         <!-- <div class="flex items-center gap-1">
           <input type="checkbox" id="rememberMe" class="w-4 h-4" v-model="remember"/>
-          <label for="rememberMe" class="text-sm text-secondary-clr font-regular-ff mb-0">
+          <label for="rememberMe" class="mb-0 text-sm text-secondary-clr font-regular-ff">
             {{ t("FORMS.Labels.rememberMe") }}
           </label>
         </div> -->
 
-        <NuxtLink v-if="forgetPasswordPath" :to="forgetPasswordPath" class="text-sm text-secondary-clr font-regular-ff mb-0 hover:text-main-clr">
+        <NuxtLink v-if="forgetPasswordPath" :to="forgetPasswordPath" class="mb-0 text-sm text-secondary-clr font-regular-ff hover:text-main-clr">
           {{ t("FORMS.Labels.forgotPassword") }}
         </NuxtLink>
       </div>

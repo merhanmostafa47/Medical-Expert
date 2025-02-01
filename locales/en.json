@@ -20,30 +20,93 @@
       "newPassword": "new password",
       "new": "new password",
       "setPassword": "You Can Set Your Password"
-    }
+    },
+    "doctor": {
+      "clinics": "Clinics",
+      "patients": "Patients"
+    },
+    "Patients": {
+      "title": "Patients",
+      "add": "Add New Patient",
+      "edit": "Edit Patient",
+      "view": "View Patient",
+      "info": "Patient Information",
+      "name": "Patient Name",
+      "email": "Patient Email",
+      "phone": "Patient Phone",
+      "phone_number": "Patient Phone",
+      "age": "Patient Age",
+      "national_id": "Patient National Id",
+      "dob": "Patient Birth Date",
+      "gender": "Patient Gender",
+      "prescription": "Make Prescription",
+      "vital": {
+        "profile": "Vital Profile",
+        "edit": "Edit Vital Profile",
+        "statistics": "Vital Statistics",
+
+        "temperature": "Body Temperature",
+        "heart_rate": "Pulse Rate",
+        "respiratory_rate": "Respiration Rate",
+        "blood_pressure": "Blood Pressure",
+        "oxygen_level": "Blood Oxygen",
+        "weight": "Weight",
+        "blood_glucose_level": "Blood Glucose Level"
+      },
+      "history": {
+        "profile": "Health History Profile",
+        "edit": "Edit Health History Profile",
+        "statistics": "Health History Statistics",
+
+        "chronic_conditions": "Chronic Conditions",
+        "medications": "Medications",
+        "childhood_illnesses": "Childhood Illnesses",
+        "current_infections": "Current Infections",
+        "surgical_procedures": "Surgical Procedures",
+        "family_illnesses": "Family Illnesses"
+      }
+    },
+    "Gender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "logout": "logout"
   },
   "MODALS": {
-    "auth":{
-      "passwordReset":"Password changed successfully"
+    "auth": {
+      "passwordReset": "Password changed successfully"
+    },
+    "delete": {
+      "message": "Are you sure you want to delete '{name}'?"
     }
   },
   "BUTTONS": {
     "auth": {
-      "login": " sign in",
+      "login": " Sign In",
       "register": " Register Now",
-      "confirmCode": "confirm",
-      "resendOtp": "resend",
-      "goToHome": "go to home",
+      "confirmCode": "Confirm",
+      "resendOtp": "Resend",
+      "goToHome": "Go To Home",
       "send": "Send",
-      "save": "save",
-      "confirm": "confirm",
+      "save": "Save",
+      "confirm": "Confirm",
       "continue": "Continue"
-    }
+    },
+    "add": "Add",
+    "reset": "Reset",
+    "submit": "Submit",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel"
   },
   "FORMS": {
     "Labels": {
       "name": "Name",
+      "phone": "Phone Number",
+      "gender": "Gender",
       "email": "Email",
+      "birthDate": "Birth Date",
       "password": "Password",
       "rememberMe": "remember me",
       "forgotPassword": "Forget password ?",
@@ -56,6 +119,9 @@
     },
     "Placeholders": {
       "name": "Enter Your Name",
+      "gender": "Gender",
+      "birthDate": "Birth Date",
+      "phone": "Phone Number",
       "email": "Email address",
       "password": "Password",
       "nationalId": "Enter Your National ID",
@@ -81,11 +147,53 @@
         "required": "Confirm password is required",
         "validation": "Please enter a matched password"
       },
+      "phone": {
+        "required": "Phone number is required",
+        "length": "Phone number must be between 8 and 11 digits"
+      },
+      "image": {
+        "required": "Patient image is required",
+        "invalid": "Image format must be (png, jpg or jpeg)"
+      },
+      "temperature": {
+        "required": "Body temperature is required.",
+        "min": "Body temperature must be at least 1 characters."
+      },
+      "heart_rate": {
+        "required": "Pulse rate is required.",
+        "min": "Pulse rate must be at least 1 characters."
+      },
+      "respiratory_rate": {
+        "required": "Respiration rate is required.",
+        "min": "Respiration rate must be at least 1 characters."
+      },
+      "blood_pressure": {
+        "required": "Blood pressure is required.",
+        "min": "Blood pressure must be at least 1 characters."
+      },
+      "oxygen_level": {
+        "required": "Blood oxygen level is required.",
+        "min": "Blood oxygen level must be at least 1 characters."
+      },
+      "weight": {
+        "required": "Weight is required.",
+        "min": "Weight must be at least 1 characters."
+      },
+      "blood_glucose_level": {
+        "required": "Blood glucose level is required.",
+        "min": "Blood glucose level must be at least 1 characters."
+      },
+      "gender": "Gender is required",
+      "birthDate": "Birth date is required",
       "nationalId": "National ID is required",
       "nationalIdLength": "the valid national ID consists of 14 numbers",
       "pharmacyId": "Pharmacy ID is required",
       "labId": "Laboratory ID is required",
       "syndicateId": "Syndicate ID is required"
+    },
+    "Messages": {
+      "noData": "No Data Founded"
+      
     },
     "placeholders": {
       "newPassword": "Create your new password"

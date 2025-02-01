@@ -24,3 +24,5 @@ logs
 !.env.example
 
 .codegpt
+.vscode
+desktop.ini

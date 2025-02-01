@@ -10,7 +10,6 @@ const emit = defineEmits(['close'])
 </script>
 
 <template>
-
     <div v-if="isOpen" class="modal__backdrop" @click="emit('close')">
       <div class="modal">
         <slot></slot>
@@ -20,7 +19,7 @@ const emit = defineEmits(['close'])
 
 <style scoped>
 .modal__backdrop {
-  @apply fixed inset-0 size-full bg-[#D9D9D9BF] flex justify-center items-center z-50;
+  @apply fixed inset-0 size-full bg-[#D9D9D9BF] flex justify-center items-center z-[1005];
 }
 
 .modal {

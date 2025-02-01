@@ -24,6 +24,9 @@ export default {
         'main-clr': 'var(--main-clr)',
         'secondary-clr': 'var(--secondary-clr)',
         'green-clr': 'var(--green-clr)',
+        'orange-clr': 'var(--orange-clr)',
+        'red-clr': 'var(--red-clr)',
+        'gray-clr': 'var(--gray-clr)',
         
         // Backgrounds
         'opacity-bg': 'var(--opacity-bg)',
@@ -34,6 +37,9 @@ export default {
         // Customs
         'border-clr': 'var(--border-clr)',
       },
+      boxShadow: {
+        '3xl': '0px 0px 24px 0px #01366680',
+      }
     },
   },
   plugins: [],

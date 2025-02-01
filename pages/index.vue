@@ -11,6 +11,10 @@ useSeoMeta({
   title: t("TITLES.auth.login"),
 });
 
+definePageMeta({
+  layout:'auth-layout'
+})
+
 const url = useRequestURL();
 
 const userType = ref("");

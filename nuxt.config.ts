@@ -1,68 +1,108 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
+import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-
   // ============ App Configurations ============ //
   app: {
-    baseURL: '/', 
+    baseURL: "/",
     head: {
       charset: "utf-8",
     },
   },
 
+  imports: {
+    dirs: ["plugins"],
+  },
+
   nitro: {
-    preset: 'vercel', // Important for Vercel deployment
+    preset: "vercel", // Important for Vercel deployment
   },
 
   // ============ Project Css & Scripts Files ============ //
   css: [
-    '@/assets/css/main.pcss',
-    '@/assets/css/tailwind.pcss'
+    "@/assets/css/main.pcss",
+    "@mdi/font/css/materialdesignicons.min.css",
+    "@/assets/css/tailwind.pcss",
   ],
 
   // ============ Plugins Files Registeration ============ //
-  plugins: [
-    '@/plugins/i18n.client.js',
-    '@/plugins/vue-pagination.js',
-  ],
+  plugins: ["@/plugins/i18n.client.js", "@/plugins/vue-pagination.js"],
 
   // ============ Modules Registeration ============ //
   modules: [
     (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
+      nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
+        config.plugins.push(vuetify({ autoImport: true }));
+      });
     },
-    '@nuxtjs/i18n',
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-    '@nuxtjs/color-mode',
-    '@nuxt/image',
-    'nuxt-icon',
-    '@vueuse/nuxt',
-    '@vee-validate/nuxt',
-    '@nuxtjs/google-fonts',
+    "@nuxtjs/i18n",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "@nuxt/image",
+    "nuxt-icon",
+    "@vueuse/nuxt",
+    "@vee-validate/nuxt",
+    "@nuxtjs/google-fonts",
+    [
+      '@nuxt/image',
+      {
+        // Image Quality
+        quality: 80,
+        format: ['webp', 'png', 'jpeg'],
+        // The screen sizes predefined by `@nuxt/image`:
+        screens: {
+          xs: 320,
+          sm: 640,
+          md: 768,
+          lg: 1024,
+          xl: 1280,
+          xxl: 1536,
+          '2xl': 1536
+        },
+      }
+    ],
+    [
+      "@pinia/nuxt",
+      {
+        autoImports: ["defineStore", "storeToRefs", "acceptHMRUpdate"],
+      },
+    ],
   ],
 
   // ============ Modules Configurations ============ //
   i18n: {
     lazy: true,
-    langDir: 'locales',
+    langDir: "locales",
     // to escape html characters in translations
-    compilation:{
+    compilation: {
       strictMessage: false,
       escapeHtml: true,
     },
     locales: [
-      { name: 'English', code: 'en', language: 'en-US', file: 'en.json', dir: 'ltr' },
-      { name: 'العربية', code: 'ar', language: 'ar-EG', file: 'ar.json', dir: 'rtl' },
+      {
+        name: "English",
+        code: "en",
+        language: "en-US",
+        file: "en.json",
+        dir: "ltr",
+      },
+      {
+        name: "العربية",
+        code: "ar",
+        language: "ar-EG",
+        file: "ar.json",
+        dir: "rtl",
+      },
     ],
-    strategy: "prefix",
-    defaultLocale: "ar",
-    detectBrowserLanguage: false,
-    vueI18n: './i18n.config.ts',
+    // strategy: "prefix",
+    defaultLocale: "en",
+    detectBrowserLanguage: {
+      useCookie: true,
+      // cookieKey: 'i18n_redirected',
+      redirectOn: "root",
+    },
+    vueI18n: "./i18n.config.ts",
   },
 
   googleFonts: {
@@ -71,12 +111,12 @@ export default defineNuxtConfig({
     },
   },
   /* Set Rote Roles To Redirect To Default Locale Prefix If No Locale Prefix Is Exist */
-  routeRules: {
-    "/": { redirect: "/en" },
-  },
+  // routeRules: {
+  //   "/": { redirect: "/en" },
+  // },
 
   colorMode: {
-    preference: 'light'
+    preference: "light",
   },
 
   image: {
@@ -102,12 +142,12 @@ export default defineNuxtConfig({
   // ============ Postcss & Tailwind Configurations ============ //
   postcss: {
     plugins: {
-      'postcss-nested': {}
+      "postcss-nested": {},
     },
   },
 
   tailwindcss: {
-    configPath: '@/tailwind.config.js',
+    configPath: "@/tailwind.config.js",
     exposeConfig: false,
   },
 
@@ -117,6 +157,9 @@ export default defineNuxtConfig({
       template: {
         transformAssetUrls,
       },
+    },
+    server: {
+      allowedHosts: true,
     },
   },
 
@@ -137,13 +180,13 @@ export default defineNuxtConfig({
       {
         path: "~/components",
         pathPrefix: false,
-      }
-    ]
+      },
+    ],
   },
 
   build: {
-    transpile: ['vuetify', 'vue-toastification'],
+    transpile: ["vuetify", "vue-toastification"],
   },
 
-  compatibilityDate: '2024-10-25',
-})
+  compatibilityDate: "2025-01-29",
+});

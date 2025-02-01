@@ -10,14 +10,14 @@ body {
 }
 
 * {
-@apply !font-regular-ff;
+  @apply !font-regular-ff;
 
   &::-webkit-scrollbar {
     @apply w-1.5 h-1.5;
   }
 
   &::-webkit-scrollbar-track {
-    @apply bg-white
+    @apply bg-white;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -36,8 +36,4 @@ body {
 
 .Vue-Toastification__container.bottom-left .Vue-Toastification__toast {
   margin-right: unset !important;
-}
-
-.btn{
-  @apply bg-secondary-clr text-white lg:text-xl md:text-lg text-base font-semiBold-ff py-4 px-6 rounded-2xl border  border-secondary-clr border-opacity-60  flex items-center justify-center gap-5 capitalize transition-all duration-300 ease-linear lg:hover:bg-opacity-bg lg:hover:text-secondary-clr lg:hover:border-secondary-clr disabled:cursor-not-allowed  disabled:opacity-60
 }

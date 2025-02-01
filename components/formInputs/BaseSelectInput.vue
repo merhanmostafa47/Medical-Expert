@@ -156,7 +156,7 @@ const props = defineProps({
   <!-- ======== End:: Autocomplete Select Input   ======== -->
 </template>
 
-<style>
+<style lang="postcss">
 .v-autocomplete__content,
 .v-select__content {
   .v-list-item__content {
@@ -181,7 +181,7 @@ i.v-icon {
   @apply !flex !items-center !justify-center;
 }
 
-/* .v-autocomplete .v-autocomplete__selection-text {
+.v-autocomplete .v-autocomplete__selection-text {
   @apply text-input-text-clr;
-} */
+}
 </style>
