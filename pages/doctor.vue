@@ -7,9 +7,10 @@ const { t } = useI18n();
     <DocSidebar />
     <!-- Static Sidebar -->
     <v-main class="max-h-screen mx-3 overflow-y-auto lg:mx-6">
-      <TopBar :title="t('TITLES.doctor.clinics')" />
+      <TopBar :title="t(`TITLES.doctor.${$route.path.split('/').pop()}`)" />
       <!-- Top bar with title -->
-      <NuxtPage/> <!-- Dynamically render child pages here -->
+      <NuxtPage /> <!-- Dynamically render child pages here -->
     </v-main>
   </div>
 </template>
+

@@ -68,7 +68,7 @@ const logout = () => {
           </template>
         </v-list-item>
       </NuxtLink>
-      <NuxtLink :to="localePath('/patients')">
+      <NuxtLink :to="localePath('/doctor/patients')">
         <v-list-item
           :title="t('TITLES.doctor.patients')"
           :class="{
