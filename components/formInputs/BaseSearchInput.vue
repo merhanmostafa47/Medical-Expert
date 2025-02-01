@@ -18,7 +18,7 @@ const model = ref(null);
     />
   </div>
 </template>
-<style>
+<style lang="postcss">
 .search__wrapper {
   @apply bg-white w-full md:w-[70%] lg:w-[50%] xl:w-[40%] shrink-0  px-4 py-2 border-secondary-clr  border flex items-center gap-1.5  rounded-2xl;
 

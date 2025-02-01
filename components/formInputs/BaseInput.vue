@@ -69,7 +69,7 @@ const showPassword = ref(false);
 
 const togglePassword = () => {
   showPassword.value = !showPassword.value;
-}
+};
 </script>
 
 <template>
@@ -78,9 +78,7 @@ const togglePassword = () => {
     <v-col
       :cols="cols"
       :md="col"
-      v-if="
-        type == 'text' || type == 'number' || type == 'tel' || type == 'email'
-      "
+      v-if="type == 'text' || type == 'number' || type == 'tel' || type == 'email'"
       class="!p-1"
     >
       <div class="input_wrapper">
@@ -104,7 +102,7 @@ const togglePassword = () => {
       </div>
     </v-col>
     <!-- ======== End:: Input Type text | email | tel | number  ======== -->
-  
+
     <!-- ======== Start:: Input Type password ======== -->
     <v-col :cols="cols" :md="col" v-if="type == 'password'" class="!p-1">
       <div class="input_wrapper">
@@ -126,14 +124,26 @@ const togglePassword = () => {
             :base-color="'#136FB7'"
             :color="'#136FB7'"
           >
-          <Icon name="iconamoon:eye-off" size="16" v-if="showPassword"  class="eye-icon" @click="togglePassword()"/>
-          <Icon name="solar:eye-broken" size="16" v-else  class="eye-icon" @click="togglePassword()"/>
+            <Icon
+              name="iconamoon:eye-off"
+              size="16"
+              v-if="showPassword"
+              class="eye-icon"
+              @click="togglePassword()"
+            />
+            <Icon
+              name="solar:eye-broken"
+              size="16"
+              v-else
+              class="eye-icon"
+              @click="togglePassword()"
+            />
           </v-text-field>
         </div>
       </div>
     </v-col>
     <!-- ======== End:: Input Type password  ======== -->
-  
+
     <!-- ======== Start:: Textarea Input ======== -->
     <v-col :cols="cols" :md="col" v-else-if="type == 'textarea'" class="!p-1">
       <div class="input_wrapper">
@@ -159,22 +169,22 @@ const togglePassword = () => {
   </div>
 </template>
 
-<style>
-input{
-  @apply bg-opacity-bg
+<style lang="postcss">
+input {
+  @apply bg-opacity-bg !text-main-clr;
 }
-.password__input{
-  @apply relative flex items-center; 
+.password__input {
+  @apply relative flex items-center;
 
-  .eye-icon{
+  .eye-icon {
     @apply absolute translate-x-1/2 end-6 cursor-pointer text-main-clr;
   }
 }
 label {
   @apply font-regular-ff lg:text-base text-sm text-main-clr mb-2 block capitalize;
 }
-.v-field__input {
-  @apply !pb-3 !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border !border-secondary-clr;
+.v-field {
+  @apply !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border !border-secondary-clr;
 }
 
 .v-field--variant-filled .v-field__overlay {
