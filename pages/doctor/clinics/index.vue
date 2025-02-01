@@ -143,21 +143,8 @@ watch(page.value, async (newValue) => {
       </table>
     </div>
 
-    <div class="pagination__wrapper">
-      <v-pagination v-model="page" :length="5" rounded="0">
-        <template #next>
-          <button
-            type="button"
-            aria-label="Previous page"
-            aria-disabled="true"
-            @click="page++"
-          >
-            <Icon name="material-symbols:keyboard-arrow-right" size="16" />
-          </button>
-        </template>
+      <v-pagination v-model="page" :length="5">
       </v-pagination>
-    </div>
-
     <button
       class="fixed px-4 py-2 text-xs capitalize bg-white border top-1/4 end-0 border-main-clr text-main-clr rounded-ss-lg rounded-es-lg"
       @click="toggleFilterSidebar()"
