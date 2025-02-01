@@ -1,0 +1,54 @@
+input {
+  @apply bg-opacity-bg !text-main-clr shadow-none outline-none;
+  accent-color: var(--secondary-clr);
+}
+.password__input {
+  @apply relative flex items-center;
+
+  .eye-icon {
+    @apply absolute translate-x-1/2 end-6 cursor-pointer text-main-clr;
+  }
+}
+label {
+  @apply font-regular-ff lg:text-base text-sm text-main-clr mb-2 block capitalize;
+}
+.v-field {
+  @apply !rounded-lg !overflow-hidden text-start md:placeholder:text-base  bg-opacity-bg target:placeholder:!text-secondary-clr outline-none !text-[v-bind('props.color')] text-sm placeholder:!text-start placeholder:capitalize placeholder:!text-sm border !border-secondary-clr;
+}
+
+.v-field--variant-filled .v-field__overlay {
+  @apply !bg-opacity-bg;
+}
+
+.v-field--variant-filled .v-field__outline::before {
+  @apply hidden;
+}
+
+.v-messages__message {
+  @apply capitalize !leading-4;
+}
+
+.v-field__outline {
+  @apply !rounded-lg;
+}
+
+.v-label {
+  @apply !text-sm capitalize;
+}
+
+html[dir="rtl"] input[type="tel"] {
+  @apply !text-end placeholder:!text-end;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  @apply appearance-none m-0;
+}
+
+.v-field--variant-solo {
+  @apply !bg-transparent !border-none !shadow-none;
+}
+
+.v-field__outline {
+  @apply text-transparent !border-0 !hidden;
+}
