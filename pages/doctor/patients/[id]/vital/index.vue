@@ -2,7 +2,6 @@
   <v-container>
     <BaseBreadcrumb
       :breadcrumbItems="breadcrumbItems"
-     
     />
     <section class="bg-white border-secondary-clr border-2 border-md rounded-xl p-4">
       <PatientProfile @editForm="toggleVitalForm" @close="toggleVitalForm" :openEditForm="openEditForm" :title="$t('TITLES.Patients.vital.profile')" />
@@ -18,6 +17,7 @@ const route = useRoute();
 const id = route?.params?.id;
 
 const patientsStore = usePatientsStore();
+const { patientInfo } = storeToRefs(patientsStore);
 
 const openEditForm = ref(false);
 const toggleVitalForm = () => {
@@ -40,7 +40,7 @@ const breadcrumbItems = computed(() => [
     to: localePath("/doctor/patients"),
   },
   {
-    title: t("TITLES.Patients.view"),
+    title: patientInfo?.value?.name,
     disabled: false,
     to: localePath(`/doctor/patients/${id}`),
   },
@@ -50,9 +50,7 @@ const breadcrumbItems = computed(() => [
     to: localePath(`/doctor/patients/${id}/vital`),
   },
 ]);
-
 </script>
-
 
 <style lang="postcss" scoped>
   .action-btns {
