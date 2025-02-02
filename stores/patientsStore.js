@@ -68,7 +68,7 @@ export const usePatientsStore = defineStore("patients", () => {
         locale.value,
         { ...patientHistory.value }
       );
-      patientHistory.value = JSON.parse(JSON.stringify(initialHistory.value));
+      initialHistory.value = JSON.parse(JSON.stringify(patientHistory.value));
       return response;
     } catch (err) {
       throw err;
