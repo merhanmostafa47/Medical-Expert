@@ -9,9 +9,19 @@
 </template>
 
 <script setup>
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const localePath = useLocalePath();
 const route = useRoute();
+
+const patientsStore = usePatientsStore();
+const { data, error } = await useBaseFetch(
+  "GET",
+  `patients/${route?.params?.id}`,
+  locale.value
+);
+if (!error.value) {
+  patientsStore.setPatientData(data.value?.data);
+}
 
 const breadcrumbItems = computed(() => [
   {
