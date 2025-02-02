@@ -1,16 +1,16 @@
 <template>
   <NuxtImg
-      ref="imageRef"
-      :src="src || '/media/icons/main_placeholder.webp'"
-      :alt="alt"
-      :loading="loadingState"
-      :width="width"
-      :height="height"
-      :format="format"
-      :fit="fit"
-      v-bind="{ placeholder: hasPlaceholder || undefined }"
-      @error="handleImageError"
-    />
+    ref="imageRef"
+    :src="src || '/media/icons/main_placeholder.webp'"
+    :alt="alt"
+    :loading="loadingState"
+    :width="width"
+    :height="height"
+    :format="format"
+    :fit="fit"
+    v-bind="{ placeholder: hasPlaceholder || undefined }"
+    @error="handleImageError"
+  />
 </template>
 
 <script setup>
@@ -59,7 +59,7 @@ const handleImageError = async (event) => {
   await nextTick();
   if (imageRef.value?.$el) {
     imageRef.value.$el.onerror = null;
-    imageRef.value.$el.src = props.errorSrc || '/media/icons/user-placeholder.png';
+    imageRef.value.$el.src = props.errorSrc || "/media/icons/main_placeholder.webp";
   }
 };
 </script>
