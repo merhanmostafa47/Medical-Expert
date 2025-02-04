@@ -4,7 +4,7 @@
       :breadcrumbItems="breadcrumbItems"
      
     />
-    <section class="bg-white border-secondary-clr border-2 border-md rounded-xl p-4">
+    <section class="p-4 bg-white border border-secondary-clr rounded-xl">
       <PatientProfile @editForm="toggleHistoryEdit" @close="toggleHistoryEdit" :openEditForm="openEditForm" :title="$t('TITLES.Patients.vital.profile')" />
       <HistoryStatistics @close="toggleHistoryEdit" :openEditForm="openEditForm" />
     </section>

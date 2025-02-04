@@ -2,7 +2,7 @@
   <article>
     <!-- Histroy Data -->
     <div
-      class="history-section !m-0 !mb-3 pb-3 border-b-2 last:border-0 border-main-clr"
+      class="history-section !m-0 !mb-3 pb-3 border-b last:border-0 border-secondary-clr"
       v-for="(_, key, index) in patientHistory"
       :key="key"
     >
@@ -24,7 +24,7 @@
               <Icon
                 @click="removeItem(key, chipIndex)"
                 name="mdi:minus-circle"
-                class="text-red-500 text-xl cursor-pointer"
+                class="text-xl text-red-500 cursor-pointer"
               ></Icon>
             </template>
           </InfoCard>
@@ -32,7 +32,7 @@
 
         <!-- Key Doesn't Has Values -->
         <v-col v-else-if="!openEditForm" cols="12" sm="6" md="4" lg="3">
-          <p class="text-main-clr border border-main-clr rounded-lg px-3 w-fit">N/A</p>
+          <p class="px-3 border rounded-lg text-main-clr border-main-clr w-fit">N/A</p>
         </v-col>
 
         <!-- Add Data For Custom History Key -->
@@ -48,14 +48,14 @@
             v-if="!showInput[key]"
             @click="toggleInputField(key)"
             name="material-symbols:add-circle"
-            class="text-main-clr cursor-pointer text-2xl"
+            class="text-2xl cursor-pointer text-main-clr"
           ></Icon>
           <input
             v-if="showInput[key]"
             v-model="newEntry[key]"
             @keyup.enter="addItem(key)"
             :placeholder="`New ${$t(`TITLES.Patients.history.${key}`)}`"
-            class="border border-secondary-clr rounded-lg px-3 py-3 w-full h-full"
+            class="w-full h-full px-3 py-3 border rounded-lg border-secondary-clr"
             autofocus
           />
         </v-col>

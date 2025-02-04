@@ -1,7 +1,7 @@
 <template>
-  <section class="bg-white border-secondary-clr border-2 border-md rounded-xl p-4">
+  <section class="p-4 bg-white border border-secondary-clr rounded-xl">
     <MainHeader
-      class="flex justify-between items-center"
+      class="flex items-center justify-between"
       :title="$t('TITLES.Patients.info')"
     >
       <v-menu>
@@ -14,7 +14,7 @@
             />
           </v-btn>
         </template>
-        <v-list class="py-0 px-2">
+        <v-list class="px-2 py-0">
           <v-list-item class="px-2">
             <NuxtLink
               class="text-orange-clr"
@@ -32,7 +32,7 @@
 
     <!-- Patient Image and Actions -->
     <article
-      class="mb-6 flex justify-center md:justify-between items-center flex-wrap gap-4"
+      class="flex flex-wrap items-center justify-center gap-4 mb-6 md:justify-between"
     >
       <BaseImage
         class="w-24 h-24 rounded-md"
