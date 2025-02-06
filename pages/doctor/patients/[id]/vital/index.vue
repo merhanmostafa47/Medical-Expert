@@ -40,7 +40,7 @@ const breadcrumbItems = computed(() => [
     to: localePath("/doctor/patients"),
   },
   {
-    title: patientInfo?.value?.name,
+    title: patientInfo?.value?.name || t("TITLES.Patients.view"),
     disabled: false,
     to: localePath(`/doctor/patients/${id}`),
   },

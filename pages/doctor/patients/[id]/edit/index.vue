@@ -14,6 +14,8 @@ const localePath = useLocalePath();
 const route = useRoute();
 
 const patientsStore = usePatientsStore();
+const { patientData } = storeToRefs(patientsStore);
+
 const { data, error } = await useBaseFetch(
   "GET",
   `patients/${route?.params?.id}`,
@@ -30,7 +32,7 @@ const breadcrumbItems = computed(() => [
     to: localePath("/doctor/patients"),
   },
   {
-    title: t("TITLES.Patients.view"),
+    title: patientData?.value.info.name || t("TITLES.Patients.view"),
     disabled: false,
     to: localePath(`/doctor/patients/${route?.params?.id}`),
   },
