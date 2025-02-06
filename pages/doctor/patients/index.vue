@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <section class="flex flex-wrap items-center justify-between gap-2 mb-4">
-      <BaseSearchInput placeholder="Search by patient ID" @search="search = $event" />
+      <BaseSearchInput placeholder="Search by patient ID" @search="applySearch" />
       <div class="flex items-center gap-3">
         <div
           class="flex justify-space-around border-main-clr border rounded-md overflow-hidden"
@@ -38,7 +38,7 @@
       <allPatientsTable v-if="isTableView" />
       <allPatientsCards v-else />
       <v-pagination
-        @update:modelValue="updateRouterQueryParam"
+        @update:modelValue="pageChanged"
         v-model="page"
         :length="pagination.last_page"
         :total-visible="pagination.per_page"
@@ -69,17 +69,34 @@ const { data, error } = await useBaseFetch("GET", "patients", locale, null, {
 if (!error.value) {
   patientsStore.setAllPatientsData(data.value);
 }
+const applySearch = async (patientId) => {
+  if(patientId.length === 14) {
+    await router.push({
+      query: {
+        ...route.query,
+        page: 1,
+        id: patientId,
+      },
+    });
+    await fetchPatients(patientId);
+  }
+};
 
-const updateRouterQueryParam = async (newPage) => {
+const pageChanged = async (newPage) => {
   await router.push({
     query: {
       ...route.query,
       page: newPage,
     },
   });
+  await fetchPatients();
+};
 
+const fetchPatients = async (patientId) => {
   try {
-    const res = await useClientFetch("GET", "patients", locale.value, null, {
+    const res = await useClientFetch("GET", "patients", locale.value, patientId ? {
+      patient_id: patientId,
+    } :null, {
       page: page.value,
     });
     patientsStore.setAllPatientsData(res);
