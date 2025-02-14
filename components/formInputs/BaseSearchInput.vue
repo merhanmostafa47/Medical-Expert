@@ -14,7 +14,7 @@ const model = ref(null);
     <input
       v-model="model"
       :placeholder="placeholder"
-      @change="emit('search', model)"
+      @input="emit('search', model)"
     />
   </div>
 </template>

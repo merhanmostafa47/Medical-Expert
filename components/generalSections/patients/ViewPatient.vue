@@ -46,9 +46,9 @@
         <NuxtLink :to="localePath(`/doctor/patients/${id}/history`)">{{
           $t("TITLES.Patients.history.profile")
         }}</NuxtLink>
-        <!-- <NuxtLink :to="localePath(`/doctor/patients/${id}/prescription`)">{{
-          $t("TITLES.Patients.prescription")
-        }}</NuxtLink> -->
+        <NuxtLink :to="localePath(`/doctor/patients/${id}/prescription/add`)">{{
+          $t("TITLES.Patients.prescription.add")
+        }}</NuxtLink>
       </div>
     </article>
 
