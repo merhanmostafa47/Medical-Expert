@@ -45,6 +45,10 @@
       >
       </v-pagination>
     </section>
+    <div class="flex flex-col items-center justify-center my-12" v-else>
+      <NuxtImg src="/media/images/noData.png" class="h-28 w-28" />
+      <p class="text-main-clr font-bold-ff text-3xl text-center my-4">{{ $t('TITLES.noData') }}</p>
+    </div>
   </v-container>
 </template>
 
@@ -70,16 +74,14 @@ if (!error.value) {
   patientsStore.setAllPatientsData(data.value);
 }
 const applySearch = async (patientId) => {
-  if(patientId.length === 14) {
-    await router.push({
-      query: {
-        ...route.query,
-        page: 1,
-        id: patientId,
-      },
-    });
-    await fetchPatients(patientId);
-  }
+  await router.push({
+    query: {
+      ...route.query,
+      page: 1,
+      id: patientId,
+    },
+  });
+  await fetchPatients(patientId);
 };
 
 const pageChanged = async (newPage) => {
@@ -94,10 +96,9 @@ const pageChanged = async (newPage) => {
 
 const fetchPatients = async (patientId) => {
   try {
-    const res = await useClientFetch("GET", "patients", locale.value, patientId ? {
-      patient_id: patientId,
-    } :null, {
+    const res = await useClientFetch("GET", "patients", locale.value, null, {
       page: page.value,
+      search: patientId,
     });
     patientsStore.setAllPatientsData(res);
   } catch (error) {
