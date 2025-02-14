@@ -1,6 +1,7 @@
 {
   "APP_NAME": "Medical Expert",
   "TITLES": {
+    "noData": "No Data Founded",
     "auth": {
       "login": "Sign In",
       "register": "Sign Up",
@@ -50,7 +51,8 @@
         "category": "Medicine Category",
         "activeIngredients": "Medicine Active Ingredient",
         "medicines": "Medicine",
-        "dosage": "Dosage"
+        "dosage": "Dosage",
+        "export": "Export Prescription"
       },
       "vital": {
         "profile": "Vital Profile",
@@ -205,7 +207,6 @@
     },
     "Messages": {
       "noData": "No Data Founded"
-      
     },
     "placeholders": {
       "newPassword": "Create your new password"
