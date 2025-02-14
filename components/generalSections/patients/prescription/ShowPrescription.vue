@@ -6,17 +6,17 @@
     </header>
     <article>
       <v-row class="py-3" v-for="item in medicines" :key="item.id">
-        <v-col class="!py-0" cols="12" md="6">
+        <v-col class="!py-0" cols="6" md="6">
           <p><Icon name="lucide:dot"/><span>{{ $t('TITLES.Patients.prescription.medicines') }}: </span><span>{{ item.name}}</span></p>
         </v-col>
-        <v-col class="!py-0" cols="12" md="6">
+        <v-col class="!py-0" cols="6" md="6">
           <p><Icon name="lucide:dot"/><span>{{ $t('TITLES.Patients.prescription.dosage') }}: </span><span>{{ item.dosage}}</span></p>
         </v-col>
       </v-row>
     </article>
     <footer class="pt-8 mt-8 border-t border-secondary-clr">
       <v-row class="">
-        <v-col class="!py-0" v-for="(value, key) in doctorData" :key="key" cols="12" md="6">
+        <v-col class="!py-0" v-for="(value, key) in doctorData" :key="key" cols="6" md="6">
           <p><span>{{ $t(`TITLES.doctor.${key}`) }}: </span><span>{{ value }}</span></p>
         </v-col>
       </v-row>  
@@ -44,8 +44,8 @@ const medicines = computed(() => {
   const placeholdersNeeded = 8 - meds.length;
   if (placeholdersNeeded > 0) {
     const placeholders = Array.from({ length: placeholdersNeeded }).map(() => ({
-      name: '---------------------------',
-      dosage: '---------------------------',
+      name: '------------------------',
+      dosage: '------------------------',
     }));
     return [...meds, ...placeholders];
   }

@@ -36,10 +36,6 @@ const fetchActiveIngredients = async () => {
       "GET",
       "prescriptions/active-ingredients",
       locale.value,
-      null,
-      {
-        category: selectedCategories.value.map((category) => category.id),
-      }
     );
     activeIngredients.value = res?.data;
   } catch (error) {
@@ -53,7 +49,7 @@ const fetchMedicines = async () => {
   try {
     const res = await useClientFetch(
       "GET",
-      "prescription/fetch-medicines",
+      "prescriptions/fetch-medicines",
       locale.value,
       null,
       {
