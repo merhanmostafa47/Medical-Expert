@@ -62,7 +62,7 @@
       <button
         type="submit"
         :disabled="isSubmitting"
-        class="disabled:opacity-50 relative flex items-center justify-center px-4 md:px-6 py-3 !text-secondary-text-clr capitalize rounded-lg font-semiBold-ff bg-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg"
+        class="disabled:opacity-50 relative lg:min-w-32 flex items-center justify-center px-4 md:px-6 py-3 !text-secondary-text-clr capitalize rounded-lg font-semiBold-ff bg-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg"
       >
         <Icon
           name="lucide:loader-circle"
@@ -75,7 +75,7 @@
       <button
         type="reset"
         @click.prevent="resetForm"
-        class="disabled:opacity-50 relative flex items-center justify-center px-4 md:px-6 py-3 !text-main-clr capitalize rounded-lg font-bold border border-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg"
+        class="disabled:opacity-50 relative lg:min-w-32 flex items-center justify-center px-4 md:px-6 py-3 !text-main-clr capitalize rounded-lg font-bold border border-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg"
       >
         {{ t("BUTTONS.cancel") }}
       </button>

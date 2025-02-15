@@ -114,7 +114,6 @@ const submit = handleSubmit(async (values, { resetForm }) => {
         col="6"
       />
       <CustomSelectInput
-        class="!p-4"
         name="specialty"
         :label="t('FORMS.Labels.clinics.speciality')"
         :placeholder="t('FORMS.Placeholders.clinics.speciality')"

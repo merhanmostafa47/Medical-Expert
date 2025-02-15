@@ -1,5 +1,5 @@
 <template>
-  <v-col :cols="cols" :md="col" class="!p-1">
+  <v-col :cols="cols" :md="col" class="!p-4">
     <div class="input_wrapper">
       <label :for="id">
         {{ label }}

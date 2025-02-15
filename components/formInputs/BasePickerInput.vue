@@ -2,7 +2,7 @@
  <v-col
       :cols="cols"
       :md="col"
-      class="!p-1"
+      class="!p-4"
     >
     <!-- Date Picker Input -->
     <div class="input_wrapper picker" v-if="type == 'date' || type == 'time'">
