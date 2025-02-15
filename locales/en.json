@@ -44,7 +44,6 @@
         "profile": "Vital Profile",
         "edit": "Edit Vital Profile",
         "statistics": "Vital Statistics",
-
         "temperature": "Body Temperature",
         "heart_rate": "Pulse Rate",
         "respiratory_rate": "Respiration Rate",
@@ -57,7 +56,6 @@
         "profile": "Health History Profile",
         "edit": "Edit Health History Profile",
         "statistics": "Health History Statistics",
-
         "chronic_conditions": "Chronic Conditions",
         "medications": "Medications",
         "childhood_illnesses": "Childhood Illnesses",
@@ -65,6 +63,13 @@
         "surgical_procedures": "Surgical Procedures",
         "family_illnesses": "Family Illnesses"
       }
+    },
+    "clinics": {
+      "title": "clinics",
+      "add": "Add New Clinic",
+      "edit": "Edit Clinic",
+      "view": "View Clinic",
+      "info": "Clinic Information"
     },
     "Gender": {
       "male": "Male",
@@ -115,7 +120,18 @@
       "pharmacyId": "Pharmacy ID",
       "syndicateId": "Syndicate ID",
       "labId": "Laboratory ID",
-      "NewPassword": "New password"
+      "NewPassword": "New password",
+      "clinics": {
+        "name": "Clinic Name",
+        "email": "Clinic Email",
+        "phone": "Clinic Phone Number",
+        "address": "Clinic Address",
+        "speciality": "Clinic Specialty",
+        "workingHours":{
+          "from": "Working Hours (From)",
+          "to": "Working Hours (To)"
+        }
+      }
     },
     "Placeholders": {
       "name": "Enter Your Name",
@@ -127,7 +143,14 @@
       "nationalId": "Enter Your National ID",
       "pharmacyId": "Enter Your Pharmacy ID",
       "syndicateId": "Enter Your Syndicate ID",
-      "labId": "Enter Your Laboratory ID"
+      "labId": "Enter Your Laboratory ID",
+      "clinics": {
+        "name": "Enter Clinic Name",
+        "email": "Enter Clinic Email",
+        "phone": "Enter Clinic Phone Number",
+        "address": "Enter Clinic Address",
+        "speciality": "Enter Clinic Specialty"
+      }
     },
     "Validation": {
       "name": {
@@ -189,11 +212,13 @@
       "nationalIdLength": "the valid national ID consists of 14 numbers",
       "pharmacyId": "Pharmacy ID is required",
       "labId": "Laboratory ID is required",
-      "syndicateId": "Syndicate ID is required"
+      "syndicateId": "Syndicate ID is required",
+      "workingHours": "Working hours is required",
+      "specialty": "Specialty is required ",
+      "address": "Address is required"
     },
     "Messages": {
       "noData": "No Data Founded"
-      
     },
     "placeholders": {
       "newPassword": "Create your new password"

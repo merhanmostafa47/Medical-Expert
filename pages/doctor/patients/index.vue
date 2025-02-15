@@ -1,10 +1,10 @@
 <template>
-  <v-container>
-    <section class="flex flex-wrap items-center justify-between gap-2 mb-4">
+
+    <section class="flex flex-wrap items-center justify-between gap-2 px-5 mb-4">
       <BaseSearchInput placeholder="Search by patient ID" @search="search = $event" />
       <div class="flex items-center gap-3">
         <div
-          class="flex justify-space-around border-main-clr border rounded-md overflow-hidden"
+          class="flex overflow-hidden border rounded-md justify-space-around border-main-clr"
         >
           <Icon
             @click="toggleView"
@@ -45,7 +45,6 @@
       >
       </v-pagination>
     </section>
-  </v-container>
 </template>
 
 <script setup>

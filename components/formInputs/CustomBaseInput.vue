@@ -47,9 +47,9 @@
       :cols="cols"
       :md="col"
       v-if="
-        type == 'text' || type == 'number' || type == 'tel' || type == 'email'
+        type == 'text' || type == 'number' || type == 'tel' || type == 'email' || type == 'time'
       "
-      class="!p-1"
+      class="!p-4"
     >
       <div class="input_wrapper">
         <label :for="id">

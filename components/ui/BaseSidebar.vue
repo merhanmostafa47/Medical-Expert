@@ -23,7 +23,7 @@
     }
     
     .sidebar {
-      @apply bg-white rounded-ss-3xl rounded-es-3xl xl:w-[30%] lg:w-1/2 w-full h-full p-5 transition-all duration-300 ease-linear;
+      @apply bg-white rounded-ss-3xl rounded-es-3xl xl:w-[30%] lg:w-1/2 w-full h-full transition-all duration-300 ease-linear;
     }
     </style>
     

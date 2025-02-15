@@ -5,7 +5,7 @@
       class="!p-1"
     >
     <!-- Date Picker Input -->
-    <div class="input_wrapper picker" v-if="type == 'date'">
+    <div class="input_wrapper picker" v-if="type == 'date' || type == 'time'">
       <label :for="id">
         {{ label }}
       </label>
