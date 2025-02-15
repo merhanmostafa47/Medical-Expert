@@ -89,7 +89,7 @@ async function onSubmit() {
     const res = await useClientFetch("POST", 'prescriptions/make-rescription', locale.value, {
       patient_id: route.params.id,
       clinic_id: selectedClinic.value?.id,
-      medicines: selectedMedicines.value
+      medicines: selectedMedicines.value.map(med => med.id)
     });
     router.push(`/doctor/patients/${route.params.id}/prescription/${res?.data?.id}`)
   } catch(error) {
