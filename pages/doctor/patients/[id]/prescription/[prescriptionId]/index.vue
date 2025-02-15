@@ -20,6 +20,7 @@
 
       <!-- Prescription Component (Print Area) -->
       <div ref="printableArea" class="print-area">
+        <NuxtImg src="/media/logo/logo.svg"  class="print-only" />
         <ShowPrescription />
       </div>
     </section>
@@ -49,6 +50,10 @@ const handlePrint = () => {
 
 <style lang="postcss" scoped>
 /* A4 Print Styling */
+.print-only {
+  display: none;
+}
+
 @media print {
   @page {
     size: A4 portrait; /* A4 Page */
@@ -58,6 +63,10 @@ const handlePrint = () => {
   /* Hide Print Button */
   .print-hidden {
     display: none !important;
+  }
+
+   .print-only {
+    display: block !important;
   }
 
   /* Ensure A4 Dimensions */
