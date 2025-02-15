@@ -1,6 +1,7 @@
 {
   "APP_NAME": "Medical Expert",
   "TITLES": {
+    "noData": "No Data Founded",
     "auth": {
       "login": "Sign In",
       "register": "Sign Up",
@@ -23,7 +24,12 @@
     },
     "doctor": {
       "clinics": "Clinics",
-      "patients": "Patients"
+      "patients": "Patients",
+      "name": "Doctor Name",
+      "clinicName": "Clicnic Name",
+      "clinicPhone": "Doctor Phone",
+      "address": "Address",
+      "specialty": "Specialty"
     },
     "Patients": {
       "title": "Patients",
@@ -39,7 +45,15 @@
       "national_id": "Patient National Id",
       "dob": "Patient Birth Date",
       "gender": "Patient Gender",
-      "prescription": "Make Prescription",
+      "prescription": {
+        "show": "Show Prescription",
+        "add": "Add Prescription",
+        "category": "Medicine Category",
+        "activeIngredients": "Medicine Active Ingredient",
+        "medicines": "Medicine",
+        "dosage": "Dosage",
+        "export": "Export Prescription"
+      },
       "vital": {
         "profile": "Vital Profile",
         "edit": "Edit Vital Profile",
@@ -98,6 +112,7 @@
       "continue": "Continue"
     },
     "add": "Add",
+    "save": "Save",
     "reset": "Reset",
     "submit": "Submit",
     "view": "View",

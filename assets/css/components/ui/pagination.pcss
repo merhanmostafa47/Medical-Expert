@@ -1,49 +1,30 @@
 /* V-Pagination Styles */
 .v-pagination {
-  margin-top: 1rem;
+  @apply my-4;
 
   .v-pagination {
     &__list {
-      justify-content: flex-start;
+      @apply justify-start;
     }
     &__item {
       .v-btn {
-        color: var(--main-clr);
-        border: 1px solid var(--main-clr);
-        width: 2rem;
-        height: 2rem;
+        @apply text-main-clr border border-main-clr w-[2rem] h-[2rem];
+        &:hover {
+          @apply text-white bg-main-clr;
+        }
       }
       &--is-active {
         .v-btn {
-          color: var(--white) !important;
-          background-color: var(--main-clr);
-          font-weight: bold;
-        }
-      }
-      &:hover {
-        .v-btn {
-          color: var(--white) !important;
-          background-color: var(--main-clr);
+          @apply text-white bg-main-clr font-bold;
         }
       }
     }
     &__next {
       .v-btn {
-        color: var(--main-clr);
-        border: 1px solid var(--main-clr);
-        width: 2rem;
-        height: 2rem;
-      }
-
-      &:hover .v-btn {
-        color: var(--white) !important;
-        background-color: var(--main-clr);
-      }
-
-      &--is-active .v-btn {
-        color: var(--white) !important;
-        background-color: var(--main-clr);
-        font-weight: bold;
+        @apply text-main-clr border border-main-clr w-[2rem] h-[2rem];
+        &:hover {
+          @apply text-white bg-main-clr;
+        } 
       }
     }
     &__prev {

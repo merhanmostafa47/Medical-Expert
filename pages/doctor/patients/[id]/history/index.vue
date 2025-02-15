@@ -18,6 +18,7 @@ const route = useRoute();
 const id = route?.params?.id;
 
 const patientsStore = usePatientsStore();
+const { patientInfo } = storeToRefs(patientsStore);
 
 const openEditForm = ref(false);
 const toggleHistoryEdit = () => {
@@ -40,7 +41,7 @@ const breadcrumbItems = computed(() => [
     to: localePath("/doctor/patients"),
   },
   {
-    title: t("TITLES.Patients.view"),
+    title: patientInfo?.value?.name || t("TITLES.Patients.view"),
     disabled: false,
     to: localePath(`/doctor/patients/${id}`),
   },
