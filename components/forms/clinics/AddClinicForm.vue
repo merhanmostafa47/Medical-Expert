@@ -26,7 +26,7 @@ const validationSchema = object({
 
   phone_number: string()
     .required(t("FORMS.Validation.phone.required"))
-    .matches(/^\d{8,11}$/, t("FORMS.Validation.phone.length")),
+    .matches(/^0\d{10}$/, t("FORMS.Validation.clinicPhone.length")),
 
   specialty: string().required(t("FORMS.Validation.specialty")),
 
@@ -36,61 +36,39 @@ const validationSchema = object({
   working_hours_to: string(),
 });
 
-// Form setup
-const { handleSubmit, meta, setFieldError, isSubmitting, resetForm } = useForm({
+// Form setuplength
+const { handleSubmit, isSubmitting, values, resetForm  } = useForm({
   validationSchema,
+
 });
 
-const { value: name, errorMessage: nameError } = useField("name");
-const { value: email, errorMessage: emailError } = useField("email");
-const { value: phone_number, errorMessage: phoneError } =
-  useField("phone_number");
-const { value: speciality, errorMessage: specialityError } =
-  useField("specialty");
-const { value: address, errorMessage: addressError } = useField("address");
-const { value: working_hours_from, errorMessage: workingHoursFromError } =
-  useField("working_hours_from");
-const { value: working_hours_to, errorMessage: workingHoursTOError } =
-  useField("working_hours_to");
+async function onSuccess() {
+  const formData = new FormData();
 
-const submit = handleSubmit(async (values, { resetForm }) => {
-  const { data, error } = await useBaseFetch(
-    "POST",
-    "clinics/add",
-    locale.value,
-    {
-      name: values.name,
-      email: values.email,
-      phone_number: values.phone_number,
-      speciality: values.speciality,
-      address: values.address,
-      working_hours_from: values.working_hours_from,
-      working_hours_to: values.working_hours_to,
+  Object.keys(values).forEach(key => {
+    if (values[key] instanceof Date) {
+      formData.append(key, values[key].toISOString());
+    } else if (values[key] instanceof File || values[key] instanceof Blob) {
+      formData.append(key, values[key]);
+    } else {
+      formData.append(key, String(values[key]));
     }
-  );
-
-  // Set fields error with the server error
-  setFieldError("name", error?.value?.data?.errors?.name);
-  setFieldError("email", error?.value?.data?.errors?.email);
-  setFieldError("phone_number", error?.value?.data?.errors?.phone_number);
-  setFieldError("speciality", error?.value?.data?.errors?.speciality);
-  setFieldError("address", error?.value?.data?.errors?.address);
-
-  if (!error.value) {
-    toast.success(data?.value?.message);
+  });
+  
+  try {
+    const res = await useClientFetch("POST", 'clinics/add', locale.value, formData);
+    toast.success(res?.message);
+    router.push(localePath("/doctor/clinics"));
+  } catch(error) {
+    toast.error(error?.data?.message);
     resetForm();
-
-    router.push({
-      path: localePath("/doctor/clinics"),
-    });
-  } else {
-    toast.error(error.value?.data?.message);
   }
-});
+}
+const onSubmit = handleSubmit(onSuccess);
 </script>
 
 <template>
-  <form @submit="submit">
+  <v-form lazy-validation @submit.prevent="onSubmit">
     <v-row>
       <CustomBaseInput
         name="name"
@@ -146,7 +124,7 @@ const submit = handleSubmit(async (values, { resetForm }) => {
     <v-row class="justify-end gap-3 p-5">
       <button
         type="submit"
-        :disabled="!meta.valid"
+        :disabled="isSubmitting"
         class="disabled:opacity-50 relative lg:min-w-32 flex items-center justify-center px-4 md:px-6 py-3 !text-secondary-text-clr capitalize rounded-lg font-semiBold-ff bg-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg"
       >
         <Icon
@@ -165,5 +143,5 @@ const submit = handleSubmit(async (values, { resetForm }) => {
         {{ t("BUTTONS.cancel") }}
       </button>
     </v-row>
-  </form>
+  </v-form>
 </template>

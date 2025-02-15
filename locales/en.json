@@ -142,7 +142,7 @@
         "phone": "Clinic Phone Number",
         "address": "Clinic Address",
         "speciality": "Clinic Specialty",
-        "workingHours":{
+        "workingHours": {
           "from": "Working Hours (From)",
           "to": "Working Hours (To)"
         }
@@ -230,7 +230,10 @@
       "syndicateId": "Syndicate ID is required",
       "workingHours": "Working hours is required",
       "specialty": "Specialty is required ",
-      "address": "Address is required"
+      "address": "Address is required",
+      "clinicPhone": {
+        "length": "Phone number must be 11 digit and start with 0"
+      }
     },
     "Messages": {
       "noData": "No Data Founded"

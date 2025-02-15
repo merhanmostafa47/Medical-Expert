@@ -53,6 +53,7 @@ const { data: clinics } = await useBaseFetch("GET", "clinics", locale, null, {
 clinicsData.value = clinics.value;
 pagination.value = clinics.value.pagination;
 
+
 const deleteClinic = async () => {
   try {
     const { data } = await useBaseFetch(
@@ -73,21 +74,43 @@ const deleteClinic = async () => {
 
 const { data: specialties } = await useBaseFetch("GET", "specialties");
 
-// watch(search.value, async (newValue) => {
-//   const { data } = await useBaseFetch("GET", "clinics", locale, undefined, {
-//     search: newValue,
-//     specialty: specialty.value,
-//   });
-//   clinicsData.value = data.value;
-//   console.log(clinicsData.value);
-// });
+const selectedSpecialties = ref([]);
+const updateSelectedSpecialties = (event, specialty) => {
+  if (event.target.checked) {
+    selectedSpecialties.value.push(specialty);
+  } else {
+    const index = selectedSpecialties.value.indexOf(specialty);
+    if (index > -1) {
+      selectedSpecialties.value.splice(index, 1);
+    }
+  }
+};
 
-// watch(page.value, async (newValue) => {
-//   if (newValue) {
-//     const { data } = await useBaseFetch("GET", "clinics", { page: newValue });
-//     clinicsData.value = data.value;
-//   }
-// });
+const resetSpecialtiesFilter = () => {
+  selectedSpecialties.value = [];
+  const inputs = document.querySelectorAll("input[type=checkbox]");
+  inputs.forEach((input) => (input.checked = false));
+};
+
+const submitSpecialtiesFilter = async () => {
+  toggleFilterSidebar();
+  
+  const { data } = await useBaseFetch("GET", "clinics", locale, null, {
+    search: search.value,
+    specialty: selectedSpecialties.value,
+  });
+  clinicsData.value = data.value;
+
+  resetSpecialtiesFilter();
+};
+
+watch(search, async (newSearch) => {
+  const { data } = await useBaseFetch("GET", "clinics", locale, null, {
+    search: newSearch,
+    specialty: specialty.value,
+  });
+  clinicsData.value = data.value;
+});
 </script>
 <template>
   <div class="lg:px-5 content__wrapper">
@@ -183,7 +206,12 @@ const { data: specialties } = await useBaseFetch("GET", "specialties");
               v-for="specialty in specialties.data"
               :key="specialty"
             >
-              <input type="checkbox" :id="specialty" :name="specialty" />
+              <input
+                type="checkbox"
+                :id="specialty"
+                :name="specialty"
+                @change="updateSelectedSpecialties($event, specialty)"
+              />
               <label :for="specialty" class="mb-0">{{ specialty }}</label>
             </li>
           </ul>
@@ -191,8 +219,13 @@ const { data: specialties } = await useBaseFetch("GET", "specialties");
         <div
           class="absolute inset-x-0 bottom-0 p-5 bg-opacity-bg h-[160px] flex flex-col gap-4"
         >
-          <button class="w-full !text-sm btn bordered-btn">reset filter</button>
-          <button class="w-full !text-sm btn main-btn">submit</button>
+          <button
+            class="w-full !text-sm btn bordered-btn"
+            @click="resetSpecialtiesFilter()"
+          >
+            reset filter
+          </button>
+          <button class="w-full !text-sm btn main-btn" @click="submitSpecialtiesFilter()">submit</button>
         </div>
       </div>
     </BaseSidebar>
