@@ -96,7 +96,7 @@ function getIconForKey(key) {
   @apply flex flex-wrap justify-center gap-3;
   @apply flex flex-wrap gap-3;
   a {
-    @apply bg-white text-main-clr border-2 text-center border-secondary-clr px-4 py-3 !leading-none rounded-xl content-center hover:text-white hover:bg-secondary-clr transition duration-300;
+    @apply bg-white text-main-clr border text-center border-secondary-clr px-4 py-3 !leading-none rounded-xl content-center hover:text-white hover:bg-secondary-clr transition duration-300;
   }
 }
 </style>

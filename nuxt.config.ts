@@ -188,5 +188,10 @@ export default defineNuxtConfig({
     transpile: ["vuetify", "vue-toastification"],
   },
 
+  devServer: {
+    port: 80,
+    host:'0.0.0.0'
+  },
+
   compatibilityDate: "2025-01-29",
 });

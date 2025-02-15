@@ -192,6 +192,7 @@ onMounted(async () => {
         {{ t("BUTTONS.save") }}
       </button>
       <button
+      type="button"
         @click="router.push(`/doctor/patients/${route.params.id}`)"
         class="relative flex items-center justify-center px-4 md:px-6 py-3 !text-main-clr capitalize rounded-lg font-bold border border-main-clr text-sm md:text-base transition-all duration-300 ease-in-out hover:!bg-dark-bg"
       >
