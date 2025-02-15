@@ -38,6 +38,7 @@
       <allPatientsTable v-if="isTableView" />
       <allPatientsCards v-else />
       <v-pagination
+      v-if="pagination.last_page > 1"
         @update:modelValue="pageChanged"
         v-model="page"
         :length="pagination.last_page"
