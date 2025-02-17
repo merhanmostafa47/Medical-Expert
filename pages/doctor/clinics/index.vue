@@ -41,10 +41,6 @@ const openDeleteModal = (id, name) => {
   toggleModal();
 };
 
-const toggleFilterSidebar = () => {
-  isFilterSidebarOpen.value = !isFilterSidebarOpen.value;
-};
-
 const { data: clinics } = await useBaseFetch("GET", "clinics", locale, null, {
   search: search.value,
   specialty: specialty.value,
@@ -52,7 +48,6 @@ const { data: clinics } = await useBaseFetch("GET", "clinics", locale, null, {
 
 clinicsData.value = clinics.value;
 pagination.value = clinics.value.pagination;
-
 
 const deleteClinic = async () => {
   try {
@@ -86,15 +81,19 @@ const updateSelectedSpecialties = (event, specialty) => {
   }
 };
 
-const resetSpecialtiesFilter = () => {
+const resetSpecialtiesFilter = async () => {
   selectedSpecialties.value = [];
   const inputs = document.querySelectorAll("input[type=checkbox]");
   inputs.forEach((input) => (input.checked = false));
 };
 
+const toggleFilterSidebar = () => {
+  isFilterSidebarOpen.value = !isFilterSidebarOpen.value;
+};
+
 const submitSpecialtiesFilter = async () => {
   toggleFilterSidebar();
-  
+
   const { data } = await useBaseFetch("GET", "clinics", locale, null, {
     search: search.value,
     specialty: selectedSpecialties.value,
@@ -138,7 +137,11 @@ watch(search, async (newSearch) => {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="clinic in clinicsData.data" :key="clinic.id">
+          <tr
+            v-for="clinic in clinicsData.data"
+            :key="clinic.id"
+            v-if="clinicsData?.data?.length > 0"
+          >
             <td>{{ clinic.name }}</td>
             <td>{{ clinic.doctor_name }}</td>
             <td>{{ clinic.phone_number }}</td>
@@ -150,6 +153,11 @@ watch(search, async (newSearch) => {
                 @delete="openDeleteModal(clinic.id, clinic.name)"
               />
             </td>
+          </tr>
+          <tr v-else>
+            <td colspan="6" class="text-center !rounded-xl">
+              {{ $t("TITLES.noData") }}
+            </td> 
           </tr>
         </tbody>
       </table>
@@ -166,7 +174,7 @@ watch(search, async (newSearch) => {
       class="fixed px-4 py-2 text-xs capitalize bg-white border top-1/4 end-0 border-main-clr text-main-clr rounded-ss-lg rounded-es-lg"
       @click="toggleFilterSidebar()"
     >
-      filter
+      {{ $t("BUTTONS.filter") }}
     </button>
 
     <DeleteModal
@@ -223,9 +231,14 @@ watch(search, async (newSearch) => {
             class="w-full !text-sm btn bordered-btn"
             @click="resetSpecialtiesFilter()"
           >
-            reset filter
+            {{ $t("BUTTONS.reset") }}
           </button>
-          <button class="w-full !text-sm btn main-btn" @click="submitSpecialtiesFilter()">submit</button>
+          <button
+            class="w-full !text-sm btn main-btn"
+            @click="submitSpecialtiesFilter()"
+          >
+            {{ $t("BUTTONS.submit") }}
+          </button>
         </div>
       </div>
     </BaseSidebar>

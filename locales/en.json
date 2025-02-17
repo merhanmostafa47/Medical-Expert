@@ -118,7 +118,9 @@
     "view": "View",
     "edit": "Edit",
     "delete": "Delete",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "resetFilter":"Reset Filter",
+    "filter":"Filter"
   },
   "FORMS": {
     "Labels": {

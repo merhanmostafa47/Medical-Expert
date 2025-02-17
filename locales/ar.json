@@ -87,7 +87,10 @@
     "view": "عرض",
     "edit": "تعديل",
     "delete": "حذف",
-    "cancel": "الغاء"
+    "cancel": "الغاء",
+    "resetFilter":"اعادة تعيين الفلتر",
+    "submit": "تاكيد",
+     "filter":"تصفية"
   },
   "FORMS": {
     "Labels": {
