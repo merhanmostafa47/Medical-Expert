@@ -22,7 +22,7 @@
               v-bind="props"
           /></v-btn>
         </template>
-        <v-list class="py-0 px-2">
+        <v-list class="px-2 py-0">
           <v-list-item class="px-2">
             <NuxtLink class="text-main-clr" :to="localePath(`/doctor/patients/${item.user_id}`)">
               <v-list-item-title><Icon name="material-symbols:visibility" size="20" />
@@ -76,17 +76,18 @@ const headers = [
       }
       tbody {
         .v-data-table__tr {
+          @apply bg-white;
           td {
-            @apply text-main-clr text-center;
-            border-bottom: 1px solid var(--main-clr) !important;
-            border-top: 1px solid var(--main-clr) !important;
+            @apply text-secondary-clr text-center;
+            border-bottom: 1px solid var(--secondary-clr) !important;
+            border-top: 1px solid var(--secondary-clr) !important;
             &:first-child {
-              border-left: 1px solid var(--main-clr) !important;
+              border-left: 1px solid var(--secondary-clr) !important;
               border-top-left-radius: 1rem !important;
               border-bottom-left-radius: 1rem !important;
             }
             &:last-child {
-              border-right: 1px solid var(--main-clr) !important;
+              border-right: 1px solid var(--secondary-clr) !important;
               border-top-right-radius: 1rem !important;
               border-bottom-right-radius: 1rem !important;
             }
